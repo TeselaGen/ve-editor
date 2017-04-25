@@ -1,4 +1,4 @@
-let React = require('react');
+import React from 'react';
 import './style.css';
 import pure from 'recompose/pure'
 import draggableClassnames from '../../constants/draggableClassnames';

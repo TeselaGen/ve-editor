@@ -1,5 +1,5 @@
-var trimNumberToFitWithin0ToAnotherNumber = require('ve-range-utils/trimNumberToFitWithin0ToAnotherNumber');
-var normalizePositionByRangeLength = require('ve-range-utils/normalizePositionByRangeLength');
+import trimNumberToFitWithin0ToAnotherNumber from 've-range-utils/trimNumberToFitWithin0ToAnotherNumber';
+import normalizePositionByRangeLength from 've-range-utils/normalizePositionByRangeLength';
 export default function handleCaretMoved({
     moveBy, 
     circular, 

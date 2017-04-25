@@ -9,7 +9,7 @@ import createAction from './utils/createMetaAction'
 export const selectionLayerClear = createAction('selectionLayerClear')
 export const selectionLayerUpdate = createAction('selectionLayerUpdate')
 
-var { caretPositionUpdate } = require('./caretPosition'); //important, keep this here in the order of the file and let it use the commonjs syntax! 
+import { caretPositionUpdate } from './caretPosition'; //important, keep this here in the order of the file and let it use the commonjs syntax! 
 // ------------------------------------
 // Reducer
 // ------------------------------------

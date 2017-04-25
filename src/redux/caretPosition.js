@@ -11,7 +11,7 @@ export const caretPositionClear = createAction('caretPositionClear')
 export const caretPositionUpdate = createAction('caretPositionUpdate')
 
 
-var { selectionLayerUpdate } = require('./selectionLayer'); //important, keep this here in the order of the file and let it use the commonjs syntax! 
+import { selectionLayerUpdate } from './selectionLayer'; //important, keep this here in the order of the file and let it use the commonjs syntax! 
 
 
 // ------------------------------------

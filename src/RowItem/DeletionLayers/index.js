@@ -4,8 +4,8 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import './style.css';
 
-var getXStartAndWidthOfRangeWrtRow = require('../getXStartAndWidthOfRangeWrtRow');
-let getOverlapsOfPotentiallyCircularRanges = require('ve-range-utils/getOverlapsOfPotentiallyCircularRanges');
+import getXStartAndWidthOfRangeWrtRow from '../getXStartAndWidthOfRangeWrtRow';
+import getOverlapsOfPotentiallyCircularRanges from 've-range-utils/getOverlapsOfPotentiallyCircularRanges';
 
 function mixin(target, source) {
     target = target.prototype;

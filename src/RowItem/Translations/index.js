@@ -1,12 +1,11 @@
 import './style.css';
 import React, { PropTypes } from 'react';
 import getAnnotationRangeType from 've-range-utils/getAnnotationRangeType';
-const AnnotationContainerHolder = require('../AnnotationContainerHolder');
-const AnnotationPositioner = require('../AnnotationPositioner');
-const Translation = require('./Translation');
-const getXStartAndWidthOfRowAnnotation = require('../getXStartAndWidthOfRowAnnotation');
-
-const PureRenderMixin = require('react-addons-pure-render-mixin');
+import AnnotationContainerHolder from '../AnnotationContainerHolder';
+import AnnotationPositioner from '../AnnotationPositioner';
+import Translation from './Translation';
+import getXStartAndWidthOfRowAnnotation from '../getXStartAndWidthOfRowAnnotation';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 const Translations = React.createClass({
     mixins: [PureRenderMixin],

@@ -1,6 +1,6 @@
-var React = require('react');
+import React from 'react';
 import shouldFlipText from './shouldFlipText';
-var Path = require('paths-js/path');
+import Path from 'paths-js/path';
 function polarToSpecialCartesian(radius, angleInRadians) {
     //the 0 angle returns the 0,1 point on the unit circle instead of the 1,0 point like normal
     return {

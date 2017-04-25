@@ -1,8 +1,9 @@
 // var ac = require('ve-api-check');
 // ac.throw([ac.posInt, ac.posInt, ac.bool], arguments);
-var lruMemoize = require('lru-memoize')
-var mapAnnotationsToRows = require('ve-sequence-utils/mapAnnotationsToRows');
-var annotationTypes = require('ve-sequence-utils/annotationTypes');
+import lruMemoize from 'lru-memoize';
+
+import mapAnnotationsToRows from 've-sequence-utils/mapAnnotationsToRows';
+import annotationTypes from 've-sequence-utils/annotationTypes';
 function prepareRowData(sequenceData, bpsPerRow) {
     // ac.throw([ac.sequenceData, ac.posInt], arguments);
     var sequenceLength = sequenceData.sequence.length;

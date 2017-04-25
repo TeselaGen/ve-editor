@@ -1,5 +1,5 @@
 import getSequenceWithinRange from 've-range-utils/getSequenceWithinRange';
-var Clipboard = require('./Clipboard');
+import Clipboard from './Clipboard';
 import updateSelectionOrCaret from '../utils/selectionAndCaretUtils/updateSelectionOrCaret';
 import normalizePositionByRangeLength from 've-range-utils/normalizePositionByRangeLength';
 import getRangeLength from 've-range-utils/getRangeLength';

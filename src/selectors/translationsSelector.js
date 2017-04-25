@@ -8,7 +8,7 @@ import getAminoAcidDataForEachBaseOfDna from 've-sequence-utils/getAminoAcidData
 import each from 'lodash/each';
 
 function translationsSelector(sequence, orfs, showOrfTranslations, showOrfs, translations) {
-	var translationsToPass = {...translations, ...(showOrfTranslations && showOrfs) ? orfs : {}}
+	var translationsToPass = {...translations, ...((showOrfTranslations && showOrfs ? orfs : {}))}
   each(translationsToPass, function (translation) {
     translation.aminoAcids = getAminoAcidDataForEachBaseOfDna(sequence, translation.forward, translation)
   })

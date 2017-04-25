@@ -3,14 +3,15 @@ import getSequenceWithinRange from 've-range-utils/getSequenceWithinRange';
 import './style.css'
 import forEach from 'lodash/forEach'
 import React, { PropTypes } from 'react';
-// import './style.css'
-let getXStartAndWidthOfRowAnnotation = require('../getXStartAndWidthOfRowAnnotation');
-let getAnnotationRangeType = require('ve-range-utils/getAnnotationRangeType');
-let Primer = require('./Primer');
-let PureRenderMixin = require('react-addons-pure-render-mixin');
 
-let AnnotationContainerHolder = require('../AnnotationContainerHolder');
-let AnnotationPositioner = require('../AnnotationPositioner');
+// import './style.css'
+import getXStartAndWidthOfRowAnnotation from '../getXStartAndWidthOfRowAnnotation';
+
+import getAnnotationRangeType from 've-range-utils/getAnnotationRangeType';
+import Primer from './Primer';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import AnnotationContainerHolder from '../AnnotationContainerHolder';
+import AnnotationPositioner from '../AnnotationPositioner';
 
 let Primers = React.createClass({
     mixins: [PureRenderMixin],

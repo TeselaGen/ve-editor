@@ -383,9 +383,7 @@ export default class CircularView extends React.Component {
           //DRAW SELECTION LAYER
           var selectionLayers = [
               ...additionalSelectionLayers,
-              ...Array.isArray(selectionLayer)
-              ? selectionLayer
-              : [selectionLayer]
+              ...((Array.isArray(selectionLayer) ? selectionLayer : [selectionLayer]))
           ]
           return selectionLayers.map(function (selectionLayer, index) {
             if (selectionLayer.start >= 0 && selectionLayer.end >= 0 && sequenceLength > 0) {

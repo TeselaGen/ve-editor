@@ -1,7 +1,7 @@
 import getAnnotationNameAndStartStopString from '../utils/getAnnotationNameAndStartStopString';
 import React, { PropTypes } from 'react';
 import orfFrameToColorMap from '../constants/orfFrameToColorMap'
-let PureRenderMixin = require('react-addons-pure-render-mixin');
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 var Orf = React.createClass({
     mixins: [PureRenderMixin],
     

@@ -1,5 +1,5 @@
-var React = require('react');
-var PureRenderMixin = require('react-addons-pure-render-mixin');
+import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 var AnnotationPositioner = React.createClass({
     mixins: [PureRenderMixin],
@@ -23,4 +23,4 @@ var AnnotationPositioner = React.createClass({
 });
 module.exports = AnnotationPositioner;
 
-          // key={'feature' + annotation.id + 'start:' + annotationRange.start}
+// key={'feature' + annotation.id + 'start:' + annotationRange.start}

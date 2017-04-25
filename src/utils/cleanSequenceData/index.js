@@ -2,11 +2,13 @@ import featureColors from 've-sequence-utils/featureColors'
 import featureColorMap from '../../constants/featureColorMap.json';
 import lruMemoize from 'lru-memoize';
 import arrayToObjWithIds from './arrayToObjWithIds';
+
 // TODO: figure out where to insert this validation exactly..
-var bsonObjectid = require('bson-objectid');
-var assign = require('lodash/assign');
-var randomColor = require('randomcolor');
-var areNonNegativeIntegers = require('validate.io-nonnegative-integer-array');
+import bsonObjectid from 'bson-objectid';
+
+import assign from 'lodash/assign';
+import randomColor from 'randomcolor';
+import areNonNegativeIntegers from 'validate.io-nonnegative-integer-array';
 import {userDefinedTypes, getSingular} from '../annotationTypes';
 
 function cleanSequenceData(seqData, options={}) {

@@ -104,9 +104,7 @@ class RowItem extends React.Component {
         }
         var selectionLayers = [
           ...additionalSelectionLayers,
-          ...Array.isArray(selectionLayer)
-            ? selectionLayer
-            : [selectionLayer]
+          ...((Array.isArray(selectionLayer) ? selectionLayer : [selectionLayer]))
        ]
 
         var {

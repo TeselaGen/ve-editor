@@ -2,14 +2,15 @@ import './style.css'
 import forEach from 'lodash/forEach'
 import React, { PropTypes } from 'react';
 import featureColorMap from '../../constants/featureColorMap.json';
-// import './style.css'
-let getXStartAndWidthOfRowAnnotation = require('../getXStartAndWidthOfRowAnnotation');
-let getAnnotationRangeType = require('ve-range-utils/getAnnotationRangeType');
-let Feature = require('./Feature');
-let PureRenderMixin = require('react-addons-pure-render-mixin');
 
-let AnnotationContainerHolder = require('../AnnotationContainerHolder');
-let AnnotationPositioner = require('../AnnotationPositioner');
+// import './style.css'
+import getXStartAndWidthOfRowAnnotation from '../getXStartAndWidthOfRowAnnotation';
+
+import getAnnotationRangeType from 've-range-utils/getAnnotationRangeType';
+import Feature from './Feature';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import AnnotationContainerHolder from '../AnnotationContainerHolder';
+import AnnotationPositioner from '../AnnotationPositioner';
 
 let Features = React.createClass({
     mixins: [PureRenderMixin],

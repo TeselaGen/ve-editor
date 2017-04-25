@@ -1,7 +1,7 @@
 import getAnnotationNameAndStartStopString from '../../utils/getAnnotationNameAndStartStopString'
 
-var React = require('react');
-var PureRenderMixin = require('react-addons-pure-render-mixin');
+import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 var Feature = React.createClass({
     mixins: [PureRenderMixin],

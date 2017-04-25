@@ -1,9 +1,9 @@
-var normalizePositionByRangeLength = require('ve-range-utils/normalizePositionByRangeLength');
+import normalizePositionByRangeLength from 've-range-utils/normalizePositionByRangeLength';
 import getXStartAndWidthOfRangeWrtRow from './getXStartAndWidthOfRangeWrtRow';
 import React, {PropTypes} from 'react';
 import calculateTickMarkPositionsForGivenRange from '../utils/calculateTickMarkPositionsForGivenRange';
-var getXCenterOfRowAnnotation = require('./getXCenterOfRowAnnotation');
-var PureRenderMixin = require('react-addons-pure-render-mixin');
+import getXCenterOfRowAnnotation from './getXCenterOfRowAnnotation';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 var Axis = React.createClass({
     mixins: [PureRenderMixin],

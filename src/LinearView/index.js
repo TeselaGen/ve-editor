@@ -10,7 +10,7 @@ import './style.css';
 
 var defaultCharWidth = 12
 var defaultMarginWidth = 10
-var Combokeys = require("combokeys");
+import Combokeys from 'combokeys';
 var combokeys;
 
 function noop() {
