@@ -19,7 +19,7 @@ function mixin(target, source) {
     });
 }
 
-export default class DeletionLayers extends React.Component {
+class DeletionLayers extends React.Component {
     render() {
         var {
             charWidth,

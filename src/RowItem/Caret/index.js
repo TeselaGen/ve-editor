@@ -3,7 +3,7 @@ import './style.css';
 import pure from 'recompose/pure'
 import draggableClassnames from '../../constants/draggableClassnames';
 
-export default class Caret extends React.Component{
+class Caret extends React.Component{
   render() {
       var {
           charWidth,

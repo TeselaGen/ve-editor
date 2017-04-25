@@ -20,7 +20,7 @@ function mixin(target, source) {
     });
 }
 
-export default class LineageLines extends React.Component {
+class LineageLines extends React.Component {
     render() {
         var {
             charWidth,

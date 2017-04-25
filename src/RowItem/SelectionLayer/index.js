@@ -19,7 +19,7 @@ function mixin(target, source) {
     });
 }
 
-export default class SelectionLayer extends React.Component {
+class SelectionLayer extends React.Component {
     render() {
         var {
             charWidth,
