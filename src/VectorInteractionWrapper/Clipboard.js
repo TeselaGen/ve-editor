@@ -70,4 +70,4 @@ var Clipboard = React.createClass({
     }
 });
 
-module.exports = Clipboard;
+export default Clipboard;

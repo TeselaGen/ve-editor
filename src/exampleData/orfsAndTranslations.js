@@ -1,4 +1,4 @@
-var seqString1 = "atgatggagagagagagagcgcgcgcagcagcgacgacgacggctagctacgatcgactagctagctacgatcgatcgatcgactagctagctacgatcgatcgatcgactgatcgactgactagctgcatgtaa" 
+var seqString1 = "atgatggagagagagagagcgcgcgcagcagcgacgacgacggctagctacgatcgactagctagctacgatcgatcgatcgactagctagctacgatcgatcgatcgactgatcgactgactagctgcatgtaa"
 var seqString = "";
 for (var i = 0; i < 1; i++) {
     seqString += seqString1
@@ -241,4 +241,4 @@ var sequenceData = {
 // }
 // sequenceData.sequence += reallyLongFakeSequence;
 // 
-module.exports = sequenceData;
+export default sequenceData;

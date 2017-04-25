@@ -80,4 +80,4 @@ export default class DeletionLayers extends React.Component {
 
 mixin(DeletionLayers, PureRenderMixin);
 
-module.exports = DeletionLayers;
+export default DeletionLayers;

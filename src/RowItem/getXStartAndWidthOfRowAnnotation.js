@@ -1,4 +1,4 @@
- module.exports = function getXStartAndWidthOfRowAnnotation(range, bpsPerRow, charWidth) {
+ export default function getXStartAndWidthOfRowAnnotation(range, bpsPerRow, charWidth) {
     // 24 bps long: 
     // 
     // if (range.end + 1 - range.start > 0 && )

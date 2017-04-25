@@ -68,4 +68,4 @@ var Orf = React.createClass({
         );
     }
 });
-module.exports = Orf;
+export default Orf;

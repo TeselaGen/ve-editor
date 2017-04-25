@@ -71,4 +71,4 @@ export default class LineageLines extends React.Component {
 
 mixin(LineageLines, PureRenderMixin);
 
-module.exports = LineageLines;
+export default LineageLines;

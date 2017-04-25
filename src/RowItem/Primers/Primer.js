@@ -118,4 +118,4 @@ var Primer = React.createClass({
             );
     }
 });
-module.exports = Primer;
+export default Primer;

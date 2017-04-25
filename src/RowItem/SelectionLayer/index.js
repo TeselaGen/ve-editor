@@ -96,4 +96,4 @@ export default class SelectionLayer extends React.Component {
 
 mixin(SelectionLayer, PureRenderMixin);
 
-module.exports = SelectionLayer;
+export default SelectionLayer;

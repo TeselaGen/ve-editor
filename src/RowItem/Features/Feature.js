@@ -108,4 +108,4 @@ var Feature = React.createClass({
             );
     }
 });
-module.exports = Feature;
+export default Feature;

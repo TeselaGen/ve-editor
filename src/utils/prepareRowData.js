@@ -32,4 +32,4 @@ function prepareRowData(sequenceData, bpsPerRow) {
     return rows;
 }
 
-module.exports = lruMemoize(5,undefined,true)(prepareRowData)
+export default lruMemoize(5,undefined,true)(prepareRowData);

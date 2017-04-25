@@ -23,4 +23,4 @@ export default class Caret extends React.Component{
 }
 
 
-module.exports = pure(Caret);
+export default pure(Caret);

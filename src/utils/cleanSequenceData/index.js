@@ -99,4 +99,4 @@ function cleanSequenceData(seqData, options={}) {
         return annotation;
     }
 }
-module.exports = lruMemoize(5, undefined, true)(cleanSequenceData)
+export default lruMemoize(5, undefined, true)(cleanSequenceData);

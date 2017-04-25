@@ -388,4 +388,4 @@ class RowItem extends React.Component {
 }
 
 // module.exports = pure(RowItem);
-module.exports = RowItem;
+export default RowItem;

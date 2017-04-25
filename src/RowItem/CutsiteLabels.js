@@ -97,4 +97,4 @@ let CutsiteLabels = React.createClass({
  
     }
 });
-module.exports = CutsiteLabels;
+export default CutsiteLabels;

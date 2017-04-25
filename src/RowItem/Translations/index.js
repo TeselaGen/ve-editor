@@ -73,4 +73,4 @@ const Translations = React.createClass({
           );
     }
 });
-module.exports = Translations;
+export default Translations;

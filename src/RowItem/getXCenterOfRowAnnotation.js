@@ -1,5 +1,6 @@
 import getXStartAndWidthOfRangeWrtRow from './getXStartAndWidthOfRangeWrtRow';
-module.exports = function getXCenterOfRowAnnotation(range, row, bpsPerRow, charWidth, sequenceLength) {
+
+export default function getXCenterOfRowAnnotation(range, row, bpsPerRow, charWidth, sequenceLength) {
     
     var result = getXStartAndWidthOfRangeWrtRow(range, row, bpsPerRow, charWidth, sequenceLength);
     var xStart = result.xStart;

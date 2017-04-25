@@ -66,4 +66,4 @@ var Axis = React.createClass({
     }
 });
 
-module.exports = Axis;
+export default Axis;

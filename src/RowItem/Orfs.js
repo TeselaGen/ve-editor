@@ -82,4 +82,4 @@ let Orfs = React.createClass({
 
     }
 });
-module.exports = Orfs;
+export default Orfs;

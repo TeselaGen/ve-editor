@@ -169,4 +169,4 @@ let Cutsites = React.createClass({
 });
 
 
-module.exports = Cutsites;
+export default Cutsites;

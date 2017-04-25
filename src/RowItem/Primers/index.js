@@ -119,7 +119,8 @@ let Primers = React.createClass({
 
     }
 });
-module.exports = Primers;
+
+export default Primers;
 
 
 

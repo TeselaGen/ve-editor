@@ -41,4 +41,4 @@ var Sequence = React.createClass({
     }
 });
 
-module.exports = Sequence;
+export default Sequence;
