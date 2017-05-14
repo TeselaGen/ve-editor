@@ -188,21 +188,36 @@ class RowView extends React.Component {
       }
     }
     
+    static defaultProps = {
+      sequenceData: {sequence: ''},
+      // bpToJumpTo:0,
+      editorDragged: noop,
+      editorDragStarted: noop,
+      editorClicked: noop,
+      editorDragStopped: noop,
+      onScroll:noop,
+      width:defaultContainerWidth,
+      marginWidth:defaultMarginWidth,
+      height:400,
+      veWrapperProvidedProps: {
+        
+      }
+    };
 
     render() {
         var propsToUse = {...this.props.veWrapperProvidedProps, ...this.props}
         var {
             //currently found in props
-            sequenceData = {},
-            // bpToJumpTo=0,
-            editorDragged = noop,
-            editorDragStarted = noop,
-            editorClicked = noop,
-            editorDragStopped = noop,
-            onScroll=noop,
-            width=defaultContainerWidth,
-            marginWidth=defaultMarginWidth,
-            height=400,
+            sequenceData, 
+            // bpToJumpTo,
+            editorDragged, 
+            editorDragStarted, 
+            editorClicked, 
+            editorDragStopped, 
+            onScroll,
+            width,
+            marginWidth,
+            height,
             ...rest,
         } = propsToUse;
         if (marginWidth < defaultMarginWidth) {

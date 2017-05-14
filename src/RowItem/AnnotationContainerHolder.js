@@ -1,11 +1,8 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
-var AnnotationContainerHolder = React.createClass({
-    mixins: [PureRenderMixin],
-  
-    render: function () {
-        return (
+var AnnotationContainerHolder = function () {
+    return (
       <div 
         className={this.props.className || "annotationContainer"}
         width="100%" 
@@ -13,6 +10,6 @@ var AnnotationContainerHolder = React.createClass({
         {this.props.children}
       </div>
     );
-    }
-});
+    
+}
 export default AnnotationContainerHolder;

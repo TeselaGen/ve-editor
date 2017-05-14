@@ -31,6 +31,24 @@ export default class VeToolBar extends React.Component {
     this.setState({openItem: ''})
   }
 
+  static defaultProps = {
+    onChangeHook:() => {},
+    sequenceData: {
+      sequence: ''
+    },
+    annotationVisibilityToggle:() => {},
+    annotationVisibilityShow:() => {},
+    annotationVisibilityHide:() => {},
+    annotationVisibility:{},
+    AdditionalTools:[],
+    minimumOrfSizeUpdate:() => {},
+    minimumOrfSize:300,
+    panelsShown:{},
+    panelsShownUpdate:() => {},
+    sequenceLength:0,
+    excludeObj:{},
+  };
+
   render () {
     var self = this
     var {

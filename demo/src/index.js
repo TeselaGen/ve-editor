@@ -9,15 +9,14 @@ import {
 	CutsiteFilter
 } from "../../lib";
 
-let Demo = React.createClass({
-	render() {
-		return (
-			<div>
-				<h1>ve-editor Demo</h1>
-				<CircularView />
-			</div>
-		);
-	}
-});
+let Demo = function () {
+	return (
+		<div>
+			<h1>ve-editor Demo</h1>
+			<CircularView />
+		</div>
+	);
+	
+}
 
 render(<Demo />, document.querySelector("#demo"));

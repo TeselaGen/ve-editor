@@ -7,6 +7,17 @@ import Select from 'react-select';
 import map from 'lodash/map'
 
 export default class CutsiteFilter extends React.Component {
+  static defaultProps = {
+    onChangeHook:() => {},
+    filteredRestrictionEnzymes:[],
+    filteredRestrictionEnzymesUpdate:[],
+    allCutsites: {cutsitesByName:{}},
+    sequenceData: {
+      sequence: ''
+    },
+    dispatch:() => {}
+  };
+    
   render () {
     var {
       onChangeHook,
@@ -19,6 +30,7 @@ export default class CutsiteFilter extends React.Component {
       dispatch
       // ...rest
     } = this.props;
+    
     // var {handleOpen, handleClose} = this
     var options = [...map(specialCutsiteFilterOptions, (opt) => opt),...Object.keys(cutsitesByName).map(function (key) {
                       return {label: key, value: key}
