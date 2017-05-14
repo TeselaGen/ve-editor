@@ -4,7 +4,62 @@
 [![npm package][npm-badge]][npm]
 [![Coveralls][coveralls-badge]][coveralls]
 
-Describe ve-editor here.
+This repo contains a react VectorEditor component + redux hook-ins for that component. Also available for use are subcomponents:
+
+```
+CircularView
+LinearView
+RowView
+RowItem
+StatusBar
+VeToolBar
+```
+
+Use this package like: 
+
+
+```js
+//rootReducer.js
+import {reducer as VectorEditor} from 've-editor';
+
+var initialState = {VectorEditor: {
+  YourNamedEditor: {},
+}}
+return combineReducers({
+    VectorEditor, //plug in the VectorEditor reducer
+    ...etc.
+})
+
+//YourNamedEditor.js
+import createVectorEditor from 've-editor'
+export default createVectorEditor({
+  namespace: 'YourNamedEditor', 
+})
+
+
+//a-file-that-uses-the-editor.js
+import YourNamedEditor from '../YourNamedEditor';
+var {VectorEditor, VectorEditorContainer, veSelectors, veActions} = YourNamedEditor
+
+render() {
+	return (
+	<div>
+		<VectorEditor {...{actionOverrides}}>
+		  <CircularView
+		    {
+		      ...{
+		        ...editorDimensions,
+		      }
+		    }
+		    />
+		</VectorEditor>
+	</div>
+	)
+}
+
+```
+
+
 
 [build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
 [build]: https://travis-ci.org/user/repo

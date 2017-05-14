@@ -5,11 +5,11 @@ import sequence from './sequence';
 import translations from './translations';
 import { combineReducers } from 'redux';
 import cleanSequenceData from '../../utils/cleanSequenceData';
-export * from './sharedActionCreators';
+// export * from './sharedActionCreators';
 export * from './primers';
-export * from './features';
-export * from './sequence';
-export * from './circular';
+// export * from './features';
+// export * from './sequence';
+// export * from './circular';
 export * from './translations';
 import { createReducer } from 'redux-act';
 

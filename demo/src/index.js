@@ -7,7 +7,7 @@ import {
 	RowItem,
 	VeToolBar,
 	CutsiteFilter
-} from "../../src";
+} from "../../lib";
 
 let Demo = React.createClass({
 	render() {
