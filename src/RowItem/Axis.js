@@ -1,6 +1,7 @@
 import normalizePositionByRangeLength from 've-range-utils/normalizePositionByRangeLength';
 import getXStartAndWidthOfRangeWrtRow from './getXStartAndWidthOfRangeWrtRow';
-import React, {PropTypes} from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import calculateTickMarkPositionsForGivenRange from '../utils/calculateTickMarkPositionsForGivenRange';
 import getXCenterOfRowAnnotation from './getXCenterOfRowAnnotation';
 

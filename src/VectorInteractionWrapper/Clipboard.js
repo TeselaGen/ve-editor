@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 class Clipboard extends React.Component {
     static propTypes = {
-        value: React.PropTypes.string.isRequired
+        value: PropTypes.string.isRequired
     };
 
     static defaultProps = {

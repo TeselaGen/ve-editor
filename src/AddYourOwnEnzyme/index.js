@@ -14,179 +14,177 @@ import getReverseComplementSequenceString from 've-sequence-utils/getReverseComp
 import PrimaryButton from '../../../components/PrimaryButton';
 import SecondaryButton from '../../../components/SecondaryButton';
 
-class AddYourOwnEnzyme extends React.Component {
-  render() {
-    var paddingStart = '-------'
-    var paddingEnd = '-------'
-    var {
-      // filteredRestrictionEnzymesAdd,
-      // addRestrictionEnzyme,
-      inputSequenceToTestAgainst= '', //pass this prop in!
-      handleClose,
-      seqName='Destination Vector',
-      addYourOwnEnzyme,
-      dispatch,
-      invalid,
-      stopAddingYourOwnEnzyme
-    } = this.props
-    addYourOwnEnzyme.chop_top_index = Number(addYourOwnEnzyme.chop_top_index)
-    addYourOwnEnzyme.chop_bottom_index = Number(addYourOwnEnzyme.chop_bottom_index)
-    var {
-      sequence='',
-      chop_top_index=0,
-      chop_bottom_index=0,
-      name=''
-    } = addYourOwnEnzyme
-    var regexString = bpsToRegexString(sequence)
-    var enzyme = {
-      name:name,
-      site:sequence,
-      forwardRegex:regexString,
-      reverseRegex: getReverseComplementSequenceString(regexString),
-      topSnipOffset:chop_top_index,
-      bottomSnipOffset:chop_bottom_index,
-      usForward:0,
-      usReverse:0,
-      color:'black'
-    }
-    var matches
-    if (regexString.length === 0) {
-      matches = []
-    } else {
-      matches = cutSequenceByRestrictionEnzyme(inputSequenceToTestAgainst, true, enzyme)
-    }
+function AddYourOwnEnzyme(props) {
+  var paddingStart = '-------'
+  var paddingEnd = '-------'
+  var {
+    // filteredRestrictionEnzymesAdd,
+    // addRestrictionEnzyme,
+    inputSequenceToTestAgainst= '', //pass this prop in!
+    handleClose,
+    seqName='Destination Vector',
+    addYourOwnEnzyme,
+    dispatch,
+    invalid,
+    stopAddingYourOwnEnzyme
+  } = props
+  addYourOwnEnzyme.chop_top_index = Number(addYourOwnEnzyme.chop_top_index)
+  addYourOwnEnzyme.chop_bottom_index = Number(addYourOwnEnzyme.chop_bottom_index)
+  var {
+    sequence='',
+    chop_top_index=0,
+    chop_bottom_index=0,
+    name=''
+  } = addYourOwnEnzyme
+  var regexString = bpsToRegexString(sequence)
+  var enzyme = {
+    name:name,
+    site:sequence,
+    forwardRegex:regexString,
+    reverseRegex: getReverseComplementSequenceString(regexString),
+    topSnipOffset:chop_top_index,
+    bottomSnipOffset:chop_bottom_index,
+    usForward:0,
+    usReverse:0,
+    color:'black'
+  }
+  var matches
+  if (regexString.length === 0) {
+    matches = []
+  } else {
+    matches = cutSequenceByRestrictionEnzyme(inputSequenceToTestAgainst, true, enzyme)
+  }
 
-    var errors = validate(addYourOwnEnzyme)
+  var errors = validate(addYourOwnEnzyme)
 
-    function onChange(updatedVal) {
-      dispatch({
-        type: 'ADD_YOUR_OWN_ENZYME_UPDATE',
-        payload: {
-          ...addYourOwnEnzyme,
-          ...updatedVal
-        },
-      })
-    }
-    var invalidOrNoMatches = invalid || matches.length < 1
+  function onChange(updatedVal) {
+    dispatch({
+      type: 'ADD_YOUR_OWN_ENZYME_UPDATE',
+      payload: {
+        ...addYourOwnEnzyme,
+        ...updatedVal
+      },
+    })
+  }
+  var invalidOrNoMatches = invalid || matches.length < 1
 
-    var seqPlusPadding = paddingStart + sequence + paddingEnd
+  var seqPlusPadding = paddingStart + sequence + paddingEnd
 
-    return <div className={'createYourOwnEnzyme'}>
-    <h2>Create your own enzyme</h2>
-      <CustomInput error={errors['name']} value={name} onChange={onChange} name='name' label={'Name:'}/>
-      <CustomInput error={errors['sequence']} value={sequence} onChange={onChange} name='sequence' label={
-        
-        <div className='labelWithIcon'>
-          <QuestionTooltip>
-            <div className={'taLineHolder'}>
-              <Line> Special Characters:  </Line>
-              <Line> R = G A (purine) </Line>
-              <Line> Y = T C (pyrimidine) </Line>
-              <Line> K = G T (keto) </Line>
-              <Line> M = A C (amino) </Line>
-              <Line> S = G C (strong bonds) </Line>
-              <Line> W = A T (weak bonds) </Line>
-              <Line> B = G T C (all but A) </Line>
-              <Line> D = G A T (all but C) </Line>
-              <Line> H = A C T (all but G) </Line>
-              <Line> V = G C A (all but T) </Line>
-              <Line> N = A G C T (any) </Line>
-            </div>
-          </QuestionTooltip>
-          <span>
-          Recognition sequence:
-          </span>
-        </div>
-        } 
-         onInput={function (input) {
-          var inputValue = input.target.value
-          var cleanInput = inputValue.replace(/[^rykmswbdhvnagct]/ig, '');
-          input.target.value=cleanInput
-        }}
-        />
+  return <div className={'createYourOwnEnzyme'}>
+  <h2>Create your own enzyme</h2>
+    <CustomInput error={errors['name']} value={name} onChange={onChange} name='name' label={'Name:'}/>
+    <CustomInput error={errors['sequence']} value={sequence} onChange={onChange} name='sequence' label={
       
-      <CustomInput error={errors['chop_top_index']} value={chop_top_index} onChange={onChange} name='chop_top_index' label='Chop top index:' type="number"/>
-    <CustomInput error={errors['chop_bottom_index']} value={chop_bottom_index} onChange={onChange} name='chop_bottom_index' label='Chop bottom index:' type="number"/>
+      <div className='labelWithIcon'>
+        <QuestionTooltip>
+          <div className={'taLineHolder'}>
+            <Line> Special Characters:  </Line>
+            <Line> R = G A (purine) </Line>
+            <Line> Y = T C (pyrimidine) </Line>
+            <Line> K = G T (keto) </Line>
+            <Line> M = A C (amino) </Line>
+            <Line> S = G C (strong bonds) </Line>
+            <Line> W = A T (weak bonds) </Line>
+            <Line> B = G T C (all but A) </Line>
+            <Line> D = G A T (all but C) </Line>
+            <Line> H = A C T (all but G) </Line>
+            <Line> V = G C A (all but T) </Line>
+            <Line> N = A G C T (any) </Line>
+          </div>
+        </QuestionTooltip>
+        <span>
+        Recognition sequence:
+        </span>
+      </div>
+      } 
+       onInput={function (input) {
+        var inputValue = input.target.value
+        var cleanInput = inputValue.replace(/[^rykmswbdhvnagct]/ig, '');
+        input.target.value=cleanInput
+      }}
+      />
+    
+    <CustomInput error={errors['chop_top_index']} value={chop_top_index} onChange={onChange} name='chop_top_index' label='Chop top index:' type="number"/>
+  <CustomInput error={errors['chop_bottom_index']} value={chop_bottom_index} onChange={onChange} name='chop_bottom_index' label='Chop bottom index:' type="number"/>
 
-    <RowItem
-    {
-      ...{
-        // width: 400,
-        tickSpacing: 1,
-        annotationVisibility:  {
-          cutsites: true,
-          cutsiteLabels: false,
-          axis: false,
-        },
-        sequenceLength: seqPlusPadding.length,
-        bpsPerRow: seqPlusPadding.length,
-        row: {
-          sequence: seqPlusPadding,
-          start: 0,
-          end: seqPlusPadding.length-1,
-          cutsites: {
-            'fake1': {
-              annotation: {
-                recognitionSiteRange: {
-                  start: paddingStart.length,
-                  end: paddingStart.length + sequence.length - 1,
-                },
-                topSnipBeforeBottom: chop_top_index < chop_bottom_index,
-                bottomSnipPosition: paddingStart.length + chop_bottom_index,
-                topSnipPosition: paddingStart.length +  chop_top_index,
-                id: 'fake1',
-                restrictionEnzyme: {
-                }
+  <RowItem
+  {
+    ...{
+      // width: 400,
+      tickSpacing: 1,
+      annotationVisibility:  {
+        cutsites: true,
+        cutsiteLabels: false,
+        axis: false,
+      },
+      sequenceLength: seqPlusPadding.length,
+      bpsPerRow: seqPlusPadding.length,
+      row: {
+        sequence: seqPlusPadding,
+        start: 0,
+        end: seqPlusPadding.length-1,
+        cutsites: {
+          'fake1': {
+            annotation: {
+              recognitionSiteRange: {
+                start: paddingStart.length,
+                end: paddingStart.length + sequence.length - 1,
+              },
+              topSnipBeforeBottom: chop_top_index < chop_bottom_index,
+              bottomSnipPosition: paddingStart.length + chop_bottom_index,
+              topSnipPosition: paddingStart.length +  chop_top_index,
+              id: 'fake1',
+              restrictionEnzyme: {
               }
             }
-          },
-        },
-      }
-    }
-    />
-
-    <h3 className={'cutnumber ' + (matches.length === 0 && 'invalid') }>
-      {matches.length > 10  
-        ? `Cuts more than 10 times in your ${seqName}`
-        : `Cuts ${matches.length} times in your ${seqName}`
-      }
-    </h3>
-      <div className={'buttonHolder'}>
-        <PrimaryButton className={' ta_useCutsite addYourOwnEnzymeBtn ' + (invalidOrNoMatches && 'disabled') } onClick={function () {
-          if (invalidOrNoMatches) {
-            return
           }
-          dispatch({
-            type: 'ADD_RESTRICTION_ENZYME',
-            payload: enzyme,
-            meta: {
-              EditorNamespace: ['MutagenesisEditor','SelectInsertEditor', 'ResultsEditor']
-            }
-          })
-          dispatch({
-            type: 'FILTERED_RESTRICTION_ENZYMES_ADD',
-            payload: {
-              label: name,
-              value: name,
-            },
-            meta: {
-              EditorNamespace: ['MutagenesisEditor','SelectInsertEditor', 'ResultsEditor']
-            }
-          })
-          // addRestrictionEnzyme(enzyme)
-          // filteredRestrictionEnzymesAdd({
-          //   label: name,
-          //   value: name,
-          // })
-          handleClose()
-        }}> Use Enzyme</PrimaryButton>
-        <SecondaryButton className={'addYourOwnEnzymeBtn'} onClick={stopAddingYourOwnEnzyme}>
-          Back
-        </SecondaryButton>
-      </div>
-    
-    </div>
+        },
+      },
+    }
   }
+  />
+
+  <h3 className={'cutnumber ' + (matches.length === 0 && 'invalid') }>
+    {matches.length > 10  
+      ? `Cuts more than 10 times in your ${seqName}`
+      : `Cuts ${matches.length} times in your ${seqName}`
+    }
+  </h3>
+    <div className={'buttonHolder'}>
+      <PrimaryButton className={' ta_useCutsite addYourOwnEnzymeBtn ' + (invalidOrNoMatches && 'disabled') } onClick={function () {
+        if (invalidOrNoMatches) {
+          return
+        }
+        dispatch({
+          type: 'ADD_RESTRICTION_ENZYME',
+          payload: enzyme,
+          meta: {
+            EditorNamespace: ['MutagenesisEditor','SelectInsertEditor', 'ResultsEditor']
+          }
+        })
+        dispatch({
+          type: 'FILTERED_RESTRICTION_ENZYMES_ADD',
+          payload: {
+            label: name,
+            value: name,
+          },
+          meta: {
+            EditorNamespace: ['MutagenesisEditor','SelectInsertEditor', 'ResultsEditor']
+          }
+        })
+        // addRestrictionEnzyme(enzyme)
+        // filteredRestrictionEnzymesAdd({
+        //   label: name,
+        //   value: name,
+        // })
+        handleClose()
+      }}> Use Enzyme</PrimaryButton>
+      <SecondaryButton className={'addYourOwnEnzymeBtn'} onClick={stopAddingYourOwnEnzyme}>
+        Back
+      </SecondaryButton>
+    </div>
+  
+  </div>
 }
 
 //   const selector = formValueSelector('customEnzymes')
