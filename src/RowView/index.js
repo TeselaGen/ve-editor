@@ -190,6 +190,7 @@ class RowView extends React.Component {
     
     static defaultProps = {
       sequenceData: {sequence: ''},
+      selectionLayer: {},
       // bpToJumpTo:0,
       editorDragged: noop,
       editorDragStarted: noop,

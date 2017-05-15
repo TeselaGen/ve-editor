@@ -1,29 +1,27 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-var Clipboard = React.createClass({
+class Clipboard extends React.Component {
+    static propTypes = {
+        value: PropTypes.string.isRequired
+    };
 
-    propTypes: {
-        value: React.PropTypes.string.isRequired
-    },
+    static defaultProps = {
+        className: "clipboard"
+    };
 
-    getDefaultProps: function() {
-        return {
-            className: "clipboard"
-        };
-    },
-
-    componentDidMount: function() {
+    componentDidMount() {
         this.component.parentNode.addEventListener("keydown", this.handleKeyDown, false);
         this.component.parentNode.addEventListener("keyup", this.handleKeyUp, false);
-    },
+    }
 
-    componentWillUnmount: function() {
+    componentWillUnmount() {
         this.component.parentNode.removeEventListener("keydown", this.handleKeyDown, false);
         this.component.parentNode.removeEventListener("keyup", this.handleKeyUp, false);
-    },
-  
-    handleKeyDown: function(e) {
+    }
+
+    handleKeyDown = (e) => {
         var metaKeyIsDown = (e.ctrlKey || e.metaKey);
         var textIsSelected = window.getSelection().toString();
 
@@ -34,14 +32,14 @@ var Clipboard = React.createClass({
         var element = ReactDOM.findDOMNode(this);
         element.focus();
         element.select();
-    },
+    };
 
-    handleKeyUp: function(e) {
+    handleKeyUp = (e) => {
         var element = ReactDOM.findDOMNode(this);
         element.blur();
-    },
+    };
 
-    render: function() {
+    render() {
         var value = this.props.value;
         var style = {
             position: 'fixed',
@@ -68,6 +66,6 @@ var Clipboard = React.createClass({
           onCopy={this.props.onCopy}
           />;
     }
-});
+}
 
 export default Clipboard;

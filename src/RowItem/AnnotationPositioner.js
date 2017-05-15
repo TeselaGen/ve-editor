@@ -1,20 +1,20 @@
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 
-var AnnotationPositioner = function () {
+
+var AnnotationPositioner = function (props) {
     return (
       <svg 
-        transform={this.props.transform || null}
-        height={this.props.height + 5} 
-        className={this.props.className + ' veRowViewAnnotationPosition'} 
-        width={this.props.width + 5}
+        transform={props.transform || null}
+        height={props.height + 5} 
+        className={props.className + ' veRowViewAnnotationPosition'} 
+        width={props.width + 5}
         style = {{
             position: 'absolute',
-            top: this.props.top,
-            left: (this.props.left),
+            top: props.top,
+            left: (props.left),
         }}
         >
-        {this.props.children}
+        {props.children}
       </svg>
     );
     

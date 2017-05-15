@@ -14,6 +14,8 @@ export {default as RowView} from './RowView';
 export {default as RowItem} from './RowItem';
 export {default as VeToolBar} from './VeToolBar';
 export {default as CutsiteFilter} from './CutsiteFilter';
+export {default as LinearView} from './LinearView';
+export {default as StatusBar} from './StatusBar';
 
 
 export default function createVectorEditor({namespace, actionOverrides=fakeActionOverrides}) {

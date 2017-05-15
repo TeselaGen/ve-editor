@@ -22,247 +22,234 @@ import getReverseComplementSequenceString from 've-sequence-utils/getReverseComp
 import PrimaryButton from '../../../components/PrimaryButton';
 import SecondaryButton from '../../../components/SecondaryButton';
 
-var AddYourOwnEnzyme = function (_React$Component) {
-  _inherits(AddYourOwnEnzyme, _React$Component);
+function AddYourOwnEnzyme(props) {
+  var paddingStart = '-------';
+  var paddingEnd = '-------';
+  var _props$inputSequenceT = props.inputSequenceToTestAgainst,
+      inputSequenceToTestAgainst = _props$inputSequenceT === undefined ? '' : _props$inputSequenceT,
+      handleClose = props.handleClose,
+      _props$seqName = props.seqName,
+      seqName = _props$seqName === undefined ? 'Destination Vector' : _props$seqName,
+      addYourOwnEnzyme = props.addYourOwnEnzyme,
+      dispatch = props.dispatch,
+      invalid = props.invalid,
+      stopAddingYourOwnEnzyme = props.stopAddingYourOwnEnzyme;
 
-  function AddYourOwnEnzyme() {
-    _classCallCheck(this, AddYourOwnEnzyme);
+  addYourOwnEnzyme.chop_top_index = Number(addYourOwnEnzyme.chop_top_index);
+  addYourOwnEnzyme.chop_bottom_index = Number(addYourOwnEnzyme.chop_bottom_index);
+  var _addYourOwnEnzyme$seq = addYourOwnEnzyme.sequence,
+      sequence = _addYourOwnEnzyme$seq === undefined ? '' : _addYourOwnEnzyme$seq,
+      _addYourOwnEnzyme$cho = addYourOwnEnzyme.chop_top_index,
+      chop_top_index = _addYourOwnEnzyme$cho === undefined ? 0 : _addYourOwnEnzyme$cho,
+      _addYourOwnEnzyme$cho2 = addYourOwnEnzyme.chop_bottom_index,
+      chop_bottom_index = _addYourOwnEnzyme$cho2 === undefined ? 0 : _addYourOwnEnzyme$cho2,
+      _addYourOwnEnzyme$nam = addYourOwnEnzyme.name,
+      name = _addYourOwnEnzyme$nam === undefined ? '' : _addYourOwnEnzyme$nam;
 
-    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+  var regexString = bpsToRegexString(sequence);
+  var enzyme = {
+    name: name,
+    site: sequence,
+    forwardRegex: regexString,
+    reverseRegex: getReverseComplementSequenceString(regexString),
+    topSnipOffset: chop_top_index,
+    bottomSnipOffset: chop_bottom_index,
+    usForward: 0,
+    usReverse: 0,
+    color: 'black'
+  };
+  var matches;
+  if (regexString.length === 0) {
+    matches = [];
+  } else {
+    matches = cutSequenceByRestrictionEnzyme(inputSequenceToTestAgainst, true, enzyme);
   }
 
-  AddYourOwnEnzyme.prototype.render = function render() {
-    var paddingStart = '-------';
-    var paddingEnd = '-------';
-    var _props = this.props,
-        _props$inputSequenceT = _props.inputSequenceToTestAgainst,
-        inputSequenceToTestAgainst = _props$inputSequenceT === undefined ? '' : _props$inputSequenceT,
-        handleClose = _props.handleClose,
-        _props$seqName = _props.seqName,
-        seqName = _props$seqName === undefined ? 'Destination Vector' : _props$seqName,
-        addYourOwnEnzyme = _props.addYourOwnEnzyme,
-        dispatch = _props.dispatch,
-        invalid = _props.invalid,
-        stopAddingYourOwnEnzyme = _props.stopAddingYourOwnEnzyme;
+  var errors = validate(addYourOwnEnzyme);
 
-    addYourOwnEnzyme.chop_top_index = Number(addYourOwnEnzyme.chop_top_index);
-    addYourOwnEnzyme.chop_bottom_index = Number(addYourOwnEnzyme.chop_bottom_index);
-    var _addYourOwnEnzyme$seq = addYourOwnEnzyme.sequence,
-        sequence = _addYourOwnEnzyme$seq === undefined ? '' : _addYourOwnEnzyme$seq,
-        _addYourOwnEnzyme$cho = addYourOwnEnzyme.chop_top_index,
-        chop_top_index = _addYourOwnEnzyme$cho === undefined ? 0 : _addYourOwnEnzyme$cho,
-        _addYourOwnEnzyme$cho2 = addYourOwnEnzyme.chop_bottom_index,
-        chop_bottom_index = _addYourOwnEnzyme$cho2 === undefined ? 0 : _addYourOwnEnzyme$cho2,
-        _addYourOwnEnzyme$nam = addYourOwnEnzyme.name,
-        name = _addYourOwnEnzyme$nam === undefined ? '' : _addYourOwnEnzyme$nam;
+  function onChange(updatedVal) {
+    dispatch({
+      type: 'ADD_YOUR_OWN_ENZYME_UPDATE',
+      payload: _extends({}, addYourOwnEnzyme, updatedVal)
+    });
+  }
+  var invalidOrNoMatches = invalid || matches.length < 1;
 
-    var regexString = bpsToRegexString(sequence);
-    var enzyme = {
-      name: name,
-      site: sequence,
-      forwardRegex: regexString,
-      reverseRegex: getReverseComplementSequenceString(regexString),
-      topSnipOffset: chop_top_index,
-      bottomSnipOffset: chop_bottom_index,
-      usForward: 0,
-      usReverse: 0,
-      color: 'black'
-    };
-    var matches;
-    if (regexString.length === 0) {
-      matches = [];
-    } else {
-      matches = cutSequenceByRestrictionEnzyme(inputSequenceToTestAgainst, true, enzyme);
-    }
+  var seqPlusPadding = paddingStart + sequence + paddingEnd;
 
-    var errors = validate(addYourOwnEnzyme);
-
-    function onChange(updatedVal) {
-      dispatch({
-        type: 'ADD_YOUR_OWN_ENZYME_UPDATE',
-        payload: _extends({}, addYourOwnEnzyme, updatedVal)
-      });
-    }
-    var invalidOrNoMatches = invalid || matches.length < 1;
-
-    var seqPlusPadding = paddingStart + sequence + paddingEnd;
-
-    return React.createElement(
-      'div',
-      { className: 'createYourOwnEnzyme' },
-      React.createElement(
-        'h2',
-        null,
-        'Create your own enzyme'
-      ),
-      React.createElement(CustomInput, { error: errors['name'], value: name, onChange: onChange, name: 'name', label: 'Name:' }),
-      React.createElement(CustomInput, { error: errors['sequence'], value: sequence, onChange: onChange, name: 'sequence', label: React.createElement(
-          'div',
-          { className: 'labelWithIcon' },
+  return React.createElement(
+    'div',
+    { className: 'createYourOwnEnzyme' },
+    React.createElement(
+      'h2',
+      null,
+      'Create your own enzyme'
+    ),
+    React.createElement(CustomInput, { error: errors['name'], value: name, onChange: onChange, name: 'name', label: 'Name:' }),
+    React.createElement(CustomInput, { error: errors['sequence'], value: sequence, onChange: onChange, name: 'sequence', label: React.createElement(
+        'div',
+        { className: 'labelWithIcon' },
+        React.createElement(
+          QuestionTooltip,
+          null,
           React.createElement(
-            QuestionTooltip,
-            null,
+            'div',
+            { className: 'taLineHolder' },
             React.createElement(
-              'div',
-              { className: 'taLineHolder' },
-              React.createElement(
-                Line,
-                null,
-                ' Special Characters:  '
-              ),
-              React.createElement(
-                Line,
-                null,
-                ' R = G A (purine) '
-              ),
-              React.createElement(
-                Line,
-                null,
-                ' Y = T C (pyrimidine) '
-              ),
-              React.createElement(
-                Line,
-                null,
-                ' K = G T (keto) '
-              ),
-              React.createElement(
-                Line,
-                null,
-                ' M = A C (amino) '
-              ),
-              React.createElement(
-                Line,
-                null,
-                ' S = G C (strong bonds) '
-              ),
-              React.createElement(
-                Line,
-                null,
-                ' W = A T (weak bonds) '
-              ),
-              React.createElement(
-                Line,
-                null,
-                ' B = G T C (all but A) '
-              ),
-              React.createElement(
-                Line,
-                null,
-                ' D = G A T (all but C) '
-              ),
-              React.createElement(
-                Line,
-                null,
-                ' H = A C T (all but G) '
-              ),
-              React.createElement(
-                Line,
-                null,
-                ' V = G C A (all but T) '
-              ),
-              React.createElement(
-                Line,
-                null,
-                ' N = A G C T (any) '
-              )
+              Line,
+              null,
+              ' Special Characters:  '
+            ),
+            React.createElement(
+              Line,
+              null,
+              ' R = G A (purine) '
+            ),
+            React.createElement(
+              Line,
+              null,
+              ' Y = T C (pyrimidine) '
+            ),
+            React.createElement(
+              Line,
+              null,
+              ' K = G T (keto) '
+            ),
+            React.createElement(
+              Line,
+              null,
+              ' M = A C (amino) '
+            ),
+            React.createElement(
+              Line,
+              null,
+              ' S = G C (strong bonds) '
+            ),
+            React.createElement(
+              Line,
+              null,
+              ' W = A T (weak bonds) '
+            ),
+            React.createElement(
+              Line,
+              null,
+              ' B = G T C (all but A) '
+            ),
+            React.createElement(
+              Line,
+              null,
+              ' D = G A T (all but C) '
+            ),
+            React.createElement(
+              Line,
+              null,
+              ' H = A C T (all but G) '
+            ),
+            React.createElement(
+              Line,
+              null,
+              ' V = G C A (all but T) '
+            ),
+            React.createElement(
+              Line,
+              null,
+              ' N = A G C T (any) '
             )
-          ),
-          React.createElement(
-            'span',
-            null,
-            'Recognition sequence:'
           )
         ),
-        onInput: function onInput(input) {
-          var inputValue = input.target.value;
-          var cleanInput = inputValue.replace(/[^rykmswbdhvnagct]/ig, '');
-          input.target.value = cleanInput;
-        }
-      }),
-      React.createElement(CustomInput, { error: errors['chop_top_index'], value: chop_top_index, onChange: onChange, name: 'chop_top_index', label: 'Chop top index:', type: 'number' }),
-      React.createElement(CustomInput, { error: errors['chop_bottom_index'], value: chop_bottom_index, onChange: onChange, name: 'chop_bottom_index', label: 'Chop bottom index:', type: 'number' }),
-      React.createElement(RowItem, {
-        // width: 400,
-        tickSpacing: 1,
-        annotationVisibility: {
-          cutsites: true,
-          cutsiteLabels: false,
-          axis: false
-        },
-        sequenceLength: seqPlusPadding.length,
-        bpsPerRow: seqPlusPadding.length,
-        row: {
-          sequence: seqPlusPadding,
-          start: 0,
-          end: seqPlusPadding.length - 1,
-          cutsites: {
-            'fake1': {
-              annotation: {
-                recognitionSiteRange: {
-                  start: paddingStart.length,
-                  end: paddingStart.length + sequence.length - 1
-                },
-                topSnipBeforeBottom: chop_top_index < chop_bottom_index,
-                bottomSnipPosition: paddingStart.length + chop_bottom_index,
-                topSnipPosition: paddingStart.length + chop_top_index,
-                id: 'fake1',
-                restrictionEnzyme: {}
-              }
+        React.createElement(
+          'span',
+          null,
+          'Recognition sequence:'
+        )
+      ),
+      onInput: function onInput(input) {
+        var inputValue = input.target.value;
+        var cleanInput = inputValue.replace(/[^rykmswbdhvnagct]/ig, '');
+        input.target.value = cleanInput;
+      }
+    }),
+    React.createElement(CustomInput, { error: errors['chop_top_index'], value: chop_top_index, onChange: onChange, name: 'chop_top_index', label: 'Chop top index:', type: 'number' }),
+    React.createElement(CustomInput, { error: errors['chop_bottom_index'], value: chop_bottom_index, onChange: onChange, name: 'chop_bottom_index', label: 'Chop bottom index:', type: 'number' }),
+    React.createElement(RowItem, {
+      // width: 400,
+      tickSpacing: 1,
+      annotationVisibility: {
+        cutsites: true,
+        cutsiteLabels: false,
+        axis: false
+      },
+      sequenceLength: seqPlusPadding.length,
+      bpsPerRow: seqPlusPadding.length,
+      row: {
+        sequence: seqPlusPadding,
+        start: 0,
+        end: seqPlusPadding.length - 1,
+        cutsites: {
+          'fake1': {
+            annotation: {
+              recognitionSiteRange: {
+                start: paddingStart.length,
+                end: paddingStart.length + sequence.length - 1
+              },
+              topSnipBeforeBottom: chop_top_index < chop_bottom_index,
+              bottomSnipPosition: paddingStart.length + chop_bottom_index,
+              topSnipPosition: paddingStart.length + chop_top_index,
+              id: 'fake1',
+              restrictionEnzyme: {}
             }
           }
         }
-      }),
+      }
+    }),
+    React.createElement(
+      'h3',
+      { className: 'cutnumber ' + (matches.length === 0 && 'invalid') },
+      matches.length > 10 ? 'Cuts more than 10 times in your ' + seqName : 'Cuts ' + matches.length + ' times in your ' + seqName
+    ),
+    React.createElement(
+      'div',
+      { className: 'buttonHolder' },
       React.createElement(
-        'h3',
-        { className: 'cutnumber ' + (matches.length === 0 && 'invalid') },
-        matches.length > 10 ? 'Cuts more than 10 times in your ' + seqName : 'Cuts ' + matches.length + ' times in your ' + seqName
+        PrimaryButton,
+        { className: ' ta_useCutsite addYourOwnEnzymeBtn ' + (invalidOrNoMatches && 'disabled'), onClick: function onClick() {
+            if (invalidOrNoMatches) {
+              return;
+            }
+            dispatch({
+              type: 'ADD_RESTRICTION_ENZYME',
+              payload: enzyme,
+              meta: {
+                EditorNamespace: ['MutagenesisEditor', 'SelectInsertEditor', 'ResultsEditor']
+              }
+            });
+            dispatch({
+              type: 'FILTERED_RESTRICTION_ENZYMES_ADD',
+              payload: {
+                label: name,
+                value: name
+              },
+              meta: {
+                EditorNamespace: ['MutagenesisEditor', 'SelectInsertEditor', 'ResultsEditor']
+              }
+            });
+            // addRestrictionEnzyme(enzyme)
+            // filteredRestrictionEnzymesAdd({
+            //   label: name,
+            //   value: name,
+            // })
+            handleClose();
+          } },
+        ' Use Enzyme'
       ),
       React.createElement(
-        'div',
-        { className: 'buttonHolder' },
-        React.createElement(
-          PrimaryButton,
-          { className: ' ta_useCutsite addYourOwnEnzymeBtn ' + (invalidOrNoMatches && 'disabled'), onClick: function onClick() {
-              if (invalidOrNoMatches) {
-                return;
-              }
-              dispatch({
-                type: 'ADD_RESTRICTION_ENZYME',
-                payload: enzyme,
-                meta: {
-                  EditorNamespace: ['MutagenesisEditor', 'SelectInsertEditor', 'ResultsEditor']
-                }
-              });
-              dispatch({
-                type: 'FILTERED_RESTRICTION_ENZYMES_ADD',
-                payload: {
-                  label: name,
-                  value: name
-                },
-                meta: {
-                  EditorNamespace: ['MutagenesisEditor', 'SelectInsertEditor', 'ResultsEditor']
-                }
-              });
-              // addRestrictionEnzyme(enzyme)
-              // filteredRestrictionEnzymesAdd({
-              //   label: name,
-              //   value: name,
-              // })
-              handleClose();
-            } },
-          ' Use Enzyme'
-        ),
-        React.createElement(
-          SecondaryButton,
-          { className: 'addYourOwnEnzymeBtn', onClick: stopAddingYourOwnEnzyme },
-          'Back'
-        )
+        SecondaryButton,
+        { className: 'addYourOwnEnzymeBtn', onClick: stopAddingYourOwnEnzyme },
+        'Back'
       )
-    );
-  };
-
-  return AddYourOwnEnzyme;
-}(React.Component);
+    )
+  );
+}
 
 //   const selector = formValueSelector('customEnzymes')
 // AddYourOwnEnzyme = reduxForm({
@@ -281,11 +268,11 @@ AddYourOwnEnzyme = connect(function (state) {
   return { addYourOwnEnzyme: state.VectorEditor.addYourOwnEnzyme };
 })(AddYourOwnEnzyme);
 
-var AddAdditionalEnzymes = function (_React$Component2) {
-  _inherits(AddAdditionalEnzymes, _React$Component2);
+var AddAdditionalEnzymes = function (_React$Component) {
+  _inherits(AddAdditionalEnzymes, _React$Component);
 
   function AddAdditionalEnzymes() {
-    var _temp, _this2, _ret;
+    var _temp, _this, _ret;
 
     _classCallCheck(this, AddAdditionalEnzymes);
 
@@ -293,27 +280,27 @@ var AddAdditionalEnzymes = function (_React$Component2) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, _React$Component2.call.apply(_React$Component2, [this].concat(args))), _this2), _this2.state = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
       addYourOwnEnzyme: false,
       enzymesToAdd: []
-    }, _this2.startAddingYourOwnEnzyme = function () {
-      _this2.setState({ addYourOwnEnzyme: true });
-    }, _this2.stopAddingYourOwnEnzyme = function () {
-      _this2.setState({ addYourOwnEnzyme: false });
-    }, _temp), _possibleConstructorReturn(_this2, _ret);
+    }, _this.startAddingYourOwnEnzyme = function () {
+      _this.setState({ addYourOwnEnzyme: true });
+    }, _this.stopAddingYourOwnEnzyme = function () {
+      _this.setState({ addYourOwnEnzyme: false });
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   AddAdditionalEnzymes.prototype.render = function render() {
-    var _this3 = this;
+    var _this2 = this;
 
     if (this.state.addYourOwnEnzyme) {
       return React.createElement(AddYourOwnEnzyme, _extends({}, this.props, { stopAddingYourOwnEnzyme: this.stopAddingYourOwnEnzyme }));
     }
-    var _props2 = this.props,
-        dispatch = _props2.dispatch,
-        handleClose = _props2.handleClose,
-        _props2$inputSequence = _props2.inputSequenceToTestAgainst,
-        inputSequenceToTestAgainst = _props2$inputSequence === undefined ? '' : _props2$inputSequence;
+    var _props = this.props,
+        dispatch = _props.dispatch,
+        handleClose = _props.handleClose,
+        _props$inputSequenceT2 = _props.inputSequenceToTestAgainst,
+        inputSequenceToTestAgainst = _props$inputSequenceT2 === undefined ? '' : _props$inputSequenceT2;
     var enzymesToAdd = this.state.enzymesToAdd;
 
     return React.createElement(
@@ -339,7 +326,7 @@ var AddAdditionalEnzymes = function (_React$Component2) {
             return { label: enzyme.name, value: enzyme };
           }),
           onChange: function onChange(enzymesToAdd) {
-            _this3.setState({
+            _this2.setState({
               enzymesToAdd: enzymesToAdd.map(function (_ref) {
                 var value = _ref.value;
 

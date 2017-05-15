@@ -4,30 +4,28 @@ import './style.css';
 import {ModalComponent} from '../../../components/ModalDialog'
 import { connect } from 'react-redux'
 
-class AddYourOwnEnzymeModalWrapper extends React.Component {
-  render () {
-    var {
-      dispatch,
-      isOpen
-    } = this.props;
-    function handleClose() {
-      dispatch({
-        type: 'ADD_YOUR_OWN_ENZYME_CLOSE'
-      })
-    }
-    return (
-      <ModalComponent {
-          ...{
-              open: isOpen,
-              // dontCloseOnClickOutside: true,
-              handleClose,
-          }
-      }
-      > 
-        <AddYourOwnEnzyme {...{handleClose}}></AddYourOwnEnzyme>
-      </ModalComponent>
-    )
+function AddYourOwnEnzymeModalWrapper(props) {
+  var {
+    dispatch,
+    isOpen
+  } = props;
+  function handleClose() {
+    dispatch({
+      type: 'ADD_YOUR_OWN_ENZYME_CLOSE'
+    })
   }
+  return (
+    <ModalComponent {
+        ...{
+            open: isOpen,
+            // dontCloseOnClickOutside: true,
+            handleClose,
+        }
+    }
+    > 
+      <AddYourOwnEnzyme {...{handleClose}}></AddYourOwnEnzyme>
+    </ModalComponent>
+  )
 }
 
 AddYourOwnEnzymeModalWrapper = connect(function (state) {
