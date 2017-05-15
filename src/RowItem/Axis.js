@@ -3,9 +3,8 @@ import getXStartAndWidthOfRangeWrtRow from './getXStartAndWidthOfRangeWrtRow';
 import React, {PropTypes} from 'react';
 import calculateTickMarkPositionsForGivenRange from '../utils/calculateTickMarkPositionsForGivenRange';
 import getXCenterOfRowAnnotation from './getXCenterOfRowAnnotation';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 
-var Axis = function () {
+var Axis = function (props) {
   
   var {
       row,
@@ -14,7 +13,7 @@ var Axis = function () {
       charWidth,
       annotationHeight,
       sequenceLength
-  } = this.props;
+  } = props;
   if (row.start === 0 && row.end === 0) {
     return null
   }

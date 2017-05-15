@@ -1,18 +1,17 @@
 import getAnnotationNameAndStartStopString from '../utils/getAnnotationNameAndStartStopString';
 import React, { PropTypes } from 'react';
 import orfFrameToColorMap from '../constants/orfFrameToColorMap'
-import PureRenderMixin from 'react-addons-pure-render-mixin';
-var Orf = React.createClass({
-    mixins: [PureRenderMixin],
-    
-    propTypes: {
+
+class Orf extends React.Component {
+    static propTypes = {
         width: PropTypes.number.isRequired,
         charWidth: PropTypes.number.isRequired,
         frame: PropTypes.number.isRequired,
         height: PropTypes.number.isRequired,
         rangeType: PropTypes.string.isRequired,
         forward: PropTypes.bool.isRequired,
-    },
+    };
+
     render() {
         var {height, rangeType, normalizedInternalStartCodonIndices=[], forward, frame=0, annotation, width, orfClicked, orfRightClicked, charWidth} = this.props;
         var heightToUse = height/1.5 
@@ -67,5 +66,6 @@ var Orf = React.createClass({
                 </g>
         );
     }
-});
+}
+
 export default Orf;

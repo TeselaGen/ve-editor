@@ -4,18 +4,18 @@ import getAnnotationRangeType from 've-range-utils/getAnnotationRangeType';
 import Orf from './Orf';
 import AnnotationContainerHolder from './AnnotationContainerHolder';
 import AnnotationPositioner from './AnnotationPositioner';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
-let Orfs = React.createClass({
-    mixins: [PureRenderMixin],
-    propTypes: {
+
+class Orfs extends React.Component {
+    static propTypes = {
         annotationRanges: React.PropTypes.array.isRequired,
         charWidth: React.PropTypes.number.isRequired,
         bpsPerRow: React.PropTypes.number.isRequired,
         annotationHeight: React.PropTypes.number.isRequired,
         spaceBetweenAnnotations: React.PropTypes.number.isRequired,
         orfClicked: React.PropTypes.func.isRequired
-    },    
-    render: function() {
+    };
+
+    render() {
         var {
             annotationRanges,
             bpsPerRow,
@@ -81,5 +81,6 @@ let Orfs = React.createClass({
         );
 
     }
-});
+}
+
 export default Orfs;

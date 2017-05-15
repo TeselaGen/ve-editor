@@ -4,7 +4,6 @@ import assign from 'lodash/assign';
 import React from 'react';
 import areNonNegativeIntegers from 'validate.io-nonnegative-integer-array';
 import getOverlapsOfPotentiallyCircularRanges from 've-range-utils/getOverlapsOfPotentiallyCircularRanges';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import getXStartAndWidthOfRangeWrtRow from './getXStartAndWidthOfRangeWrtRow';
 var snipStyle = {
     height: "111%",
@@ -62,17 +61,17 @@ function getSnipConnector(snipRange, row, sequenceLength, bpsPerRow, snipConnect
     });
 }
 
-let Cutsites = React.createClass({
-    mixins: [PureRenderMixin],
-    propTypes: {
+class Cutsites extends React.Component {
+    static propTypes = {
         // annotationRanges: React.PropTypes.object.isRequired,
         charWidth: React.PropTypes.number.isRequired,
         bpsPerRow: React.PropTypes.number.isRequired,
         row: React.PropTypes.object.isRequired,
         sequenceLength: React.PropTypes.number.isRequired,
         topStrand: React.PropTypes.bool.isRequired,
-    },
-    render: function() {
+    };
+
+    render() {
         var {
             annotationRanges,
             charWidth,
@@ -166,7 +165,7 @@ let Cutsites = React.createClass({
             </div>
         )
     }
-});
+}
 
 
 export default Cutsites;

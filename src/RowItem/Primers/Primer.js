@@ -1,11 +1,9 @@
 import getAnnotationNameAndStartStopString from '../../utils/getAnnotationNameAndStartStopString'
 
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 
-var Primer = React.createClass({
-    mixins: [PureRenderMixin],
-    propTypes: {
+class Primer extends React.Component {
+    static propTypes = {
         widthInBps: React.PropTypes.number.isRequired,
         charWidth: React.PropTypes.number.isRequired,
         height: React.PropTypes.number.isRequired,
@@ -13,9 +11,9 @@ var Primer = React.createClass({
         name: React.PropTypes.string.isRequired,
         forward: React.PropTypes.bool.isRequired,
         primerClicked: React.PropTypes.func.isRequired,
-    },
+    };
 
-    render: function() {
+    render() {
         var {
             widthInBps, 
             charWidth, 
@@ -117,5 +115,6 @@ var Primer = React.createClass({
             </g>
             );
     }
-});
+}
+
 export default Primer;

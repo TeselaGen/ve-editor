@@ -1,13 +1,13 @@
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 
-var AnnotationContainerHolder = function () {
+
+var AnnotationContainerHolder = function (props) {
     return (
       <div 
-        className={this.props.className || "annotationContainer"}
+        className={props.className || "annotationContainer"}
         width="100%" 
-        style={{height: this.props.containerHeight, position: 'relative', display: 'block'}}>
-        {this.props.children}
+        style={{height: props.containerHeight, position: 'relative', display: 'block'}}>
+        {props.children}
       </div>
     );
     

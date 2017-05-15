@@ -2,23 +2,11 @@ import classnames from 'classnames';
 import AnnotationPositioner from '../AnnotationPositioner'
 import AnnotationContainerHolder from '../AnnotationContainerHolder'
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+
 import './style.css';
 
 import getXStartAndWidthOfRangeWrtRow from '../getXStartAndWidthOfRangeWrtRow';
 import getOverlapsOfPotentiallyCircularRanges from 've-range-utils/getOverlapsOfPotentiallyCircularRanges';
-
-function mixin(target, source) {
-    target = target.prototype;
-
-    Object.getOwnPropertyNames(source).forEach((name) => {
-        let sourceProp = Object.getOwnPropertyDescriptor(source, name);
-
-        if (name !== "constructor") {
-            Object.defineProperty(target, name, sourceProp);
-        }
-    });
-}
 
 class LineageLines extends React.Component {
     render() {
@@ -68,7 +56,5 @@ class LineageLines extends React.Component {
         </AnnotationContainerHolder>
     }
 }
-
-mixin(LineageLines, PureRenderMixin);
 
 export default LineageLines;

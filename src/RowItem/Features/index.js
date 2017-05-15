@@ -8,13 +8,11 @@ import getXStartAndWidthOfRowAnnotation from '../getXStartAndWidthOfRowAnnotatio
 
 import getAnnotationRangeType from 've-range-utils/getAnnotationRangeType';
 import Feature from './Feature';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import AnnotationContainerHolder from '../AnnotationContainerHolder';
 import AnnotationPositioner from '../AnnotationPositioner';
 
-let Features = React.createClass({
-    mixins: [PureRenderMixin],
-    propTypes: {
+class Features extends React.Component {
+    static propTypes = {
         annotationRanges: PropTypes.arrayOf(PropTypes.shape({
             start: PropTypes.number.isRequired,
             end: PropTypes.number.isRequired,
@@ -32,8 +30,9 @@ let Features = React.createClass({
         spaceBetweenAnnotations: PropTypes.number.isRequired,
         sequenceLength: PropTypes.number.isRequired,
         featureClicked: PropTypes.func.isRequired,
-    },
-    render: function() {
+    };
+
+    render() {
         var {
             annotationRanges=[],
             bpsPerRow,
@@ -107,5 +106,6 @@ let Features = React.createClass({
         );
 
     }
-});
+}
+
 export default Features;

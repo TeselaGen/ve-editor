@@ -4,8 +4,8 @@ import areNonNegativeIntegers from 'validate.io-nonnegative-integer-array';
 
 function noop() {}
 
-const InfiniteScoller = React.createClass({
-  propTypes: {
+class InfiniteScoller extends React.Component {
+  static propTypes = {
     averageElementHeight: PropTypes.number,
     containerHeight: PropTypes.number.isRequired,
     totalNumberOfRows: PropTypes.number.isRequired,
@@ -17,17 +17,15 @@ const InfiniteScoller = React.createClass({
     jumpToBottomOfRow: PropTypes.bool,
     containerClassName: PropTypes.string,
     onScroll: PropTypes.func,
-  },
+  };
 
-  getDefaultProps() {
-    return {
-      onScroll: noop,
-      containerClassName: 'infiniteContainer',
-      averageElementHeight: 100,
-    };
-  },
+  static defaultProps = {
+    onScroll: noop,
+    containerClassName: 'infiniteContainer',
+    averageElementHeight: 100,
+  };
 
-  scrollTo(row, options={}) {
+  scrollTo = (row, options={}) => {
     const {
       doNotJumpIfRowIsAlreadyVisible=false,
       jumpToBottomOfRow=false,
@@ -43,9 +41,9 @@ const InfiniteScoller = React.createClass({
       this.rowJumpedTo = row;
       this.prepareVisibleRows(row, this.state.visibleRows.length);
     }
-  },
+  };
 
-  isRowActuallyVisible(row) {
+  isRowActuallyVisible = (row) => {
     // some of the rows may not actually be fully visible, despite their being in the within the visibleRowsContainer (they sit in the buffer above or below the infinite container)
     const potentiallyVisibleRows = this.getVisibleRowsContainerDomNode();
     // const lengthOfPotentiallyVisibleRows = potentiallyVisibleRows.children.length
@@ -64,9 +62,9 @@ const InfiniteScoller = React.createClass({
     }
     return false
     
-  },
+  };
 
-  onEditorScroll(event) {
+  onEditorScroll = (event) => {
     // tnr: we should maybe keep this implemented..
     if (this.adjustmentScroll) {
       // adjustment scrolls are called in componentDidUpdate where we manually set the scrollTop (which inadvertantly triggers a scroll)
@@ -113,7 +111,7 @@ const InfiniteScoller = React.createClass({
     this.props.onScroll(event);
     // set the averageElementHeight to the currentAverageElementHeight
     // setAverageRowHeight(currentAverageElementHeight);
-  },
+  };
 
   componentWillReceiveProps(nextProps) {
     const newNumberOfRowsToDisplay = this.state.visibleRows.length;
@@ -127,7 +125,7 @@ const InfiniteScoller = React.createClass({
       // so that prepare visible rows knows how many rows it has to work with
       this.prepareVisibleRows(rowStart, newNumberOfRowsToDisplay, nextProps.totalNumberOfRows);
     }
-  },
+  }
 
   componentWillUpdate() {
     let visibleRowsContainer = ReactDOM.findDOMNode(this.refs.visibleRowsContainer);
@@ -150,7 +148,7 @@ const InfiniteScoller = React.createClass({
         this.numberOfRowsAddedToTop = rowStartDifference;
       }
     }
-  },
+  }
 
   componentDidUpdate() {
     // strategy: as we scroll, we're losing or gaining rows from the top and replacing them with rows of the "averageRowHeight"
@@ -239,7 +237,7 @@ const InfiniteScoller = React.createClass({
       // this.adjustmentScroll = true;
       infiniteContainer.scrollTop = infiniteContainer.scrollTop + adjustInfiniteContainerByThisAmount;
     }
-  },
+  }
 
   componentWillMount() {
     let newRowStart = 0;
@@ -249,16 +247,16 @@ const InfiniteScoller = React.createClass({
       this.rowJumpedTo = this.props.rowToJumpTo.row;
     }
     this.prepareVisibleRows(newRowStart, 4);
-  },
+  }
 
   componentDidMount() {
     // call componentDidUpdate so that the scroll position will be adjusted properly
     // (we may load a random row in the middle of the sequence and not have the infinte container scrolled properly
     // initially, so we scroll to show the rowContainer)
     this.componentDidUpdate();
-  },
+  }
 
-  prepareVisibleRows(rowStart, newNumberOfRowsToDisplay, newTotalNumberOfRows) { // note, rowEnd is optional
+  prepareVisibleRows = (rowStart, newNumberOfRowsToDisplay, newTotalNumberOfRows) => { // note, rowEnd is optional
     this.numberOfRowsToDisplay = newNumberOfRowsToDisplay;
     const totalNumberOfRows = areNonNegativeIntegers([newTotalNumberOfRows]) ? newTotalNumberOfRows : this.props.totalNumberOfRows;
     if (rowStart > totalNumberOfRows) {
@@ -285,12 +283,12 @@ const InfiniteScoller = React.createClass({
     this.setState({
       visibleRows: newVisibleRows,
     });
-  },
+  };
 
   // public method
-  getVisibleRowsContainerDomNode() {
+  getVisibleRowsContainerDomNode = () => {
     return ReactDOM.findDOMNode(this.refs.visibleRowsContainer);
-  },
+  };
 
   render() {
     const rowItems = this.state.visibleRows.map((i) => this.props.renderRow(i));
@@ -320,7 +318,7 @@ const InfiniteScoller = React.createClass({
         <div ref="bottomSpacer" className="bottomSpacer" style={{height: this.bottomSpacerHeight}}/>
       </div>
     );
-  },
-});
+  }
+}
 
 export default InfiniteScoller;

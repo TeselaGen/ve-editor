@@ -5,11 +5,9 @@ import AnnotationContainerHolder from '../AnnotationContainerHolder';
 import AnnotationPositioner from '../AnnotationPositioner';
 import Translation from './Translation';
 import getXStartAndWidthOfRowAnnotation from '../getXStartAndWidthOfRowAnnotation';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 
-const Translations = React.createClass({
-    mixins: [PureRenderMixin],
-    propTypes: {
+class Translations extends React.Component {
+    static propTypes = {
         annotationRanges: PropTypes.arrayOf(PropTypes.shape({
             start: PropTypes.number.isRequired,
             end: PropTypes.number.isRequired,
@@ -26,7 +24,8 @@ const Translations = React.createClass({
         annotationHeight: PropTypes.number.isRequired,
         spaceBetweenAnnotations: PropTypes.number.isRequired,
         sequenceLength: PropTypes.number.isRequired,
-    },
+    };
+
     render() {
         var {annotationRanges, bpsPerRow, charWidth, annotationHeight, spaceBetweenAnnotations, ...rest} = this.props;
         if (annotationRanges.length === 0) {
@@ -72,5 +71,6 @@ const Translations = React.createClass({
               </AnnotationContainerHolder>
           );
     }
-});
+}
+
 export default Translations;

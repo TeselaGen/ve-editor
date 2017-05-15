@@ -1,21 +1,20 @@
 import React from 'react';
 import getXStartAndWidthOfRowAnnotation from './getXStartAndWidthOfRowAnnotation';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import intervalTree2 from 'interval-tree2';
 import getYOffset from '../CircularView/getYOffset'
 import forEach from 'lodash/forEach'
 
-let CutsiteLabels = React.createClass({
-    mixins: [PureRenderMixin],
-    propTypes: {
+class CutsiteLabels extends React.Component {
+    static propTypes = {
         annotationRanges: React.PropTypes.array.isRequired,
         charWidth: React.PropTypes.number.isRequired,
         bpsPerRow: React.PropTypes.number.isRequired,
         annotationHeight: React.PropTypes.number.isRequired,
         spaceBetweenAnnotations: React.PropTypes.number.isRequired,
         cutsiteClicked: React.PropTypes.func.isRequired,
-    },
-    render: function() {
+    };
+
+    render() {
        var {
            annotationRanges={},
            bpsPerRow,
@@ -96,5 +95,6 @@ let CutsiteLabels = React.createClass({
        );
  
     }
-});
+}
+
 export default CutsiteLabels;

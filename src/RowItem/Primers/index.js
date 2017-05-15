@@ -9,13 +9,11 @@ import getXStartAndWidthOfRowAnnotation from '../getXStartAndWidthOfRowAnnotatio
 
 import getAnnotationRangeType from 've-range-utils/getAnnotationRangeType';
 import Primer from './Primer';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import AnnotationContainerHolder from '../AnnotationContainerHolder';
 import AnnotationPositioner from '../AnnotationPositioner';
 
-let Primers = React.createClass({
-    mixins: [PureRenderMixin],
-    propTypes: {
+class Primers extends React.Component {
+    static propTypes = {
         annotationRanges: PropTypes.arrayOf(PropTypes.shape({
             start: PropTypes.number.isRequired,
             end: PropTypes.number.isRequired,
@@ -33,8 +31,9 @@ let Primers = React.createClass({
         spaceBetweenAnnotations: PropTypes.number.isRequired,
         sequenceLength: PropTypes.number.isRequired,
         primerClicked: PropTypes.func.isRequired,
-    },
-    render: function() {
+    };
+
+    render() {
         var {
             annotationRanges=[],
             bpsPerRow,
@@ -118,7 +117,7 @@ let Primers = React.createClass({
         );
 
     }
-});
+}
 
 export default Primers;
 

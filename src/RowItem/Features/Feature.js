@@ -1,11 +1,9 @@
 import getAnnotationNameAndStartStopString from '../../utils/getAnnotationNameAndStartStopString'
 
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 
-var Feature = React.createClass({
-    mixins: [PureRenderMixin],
-    propTypes: {
+class Feature extends React.Component {
+    static propTypes = {
         widthInBps: React.PropTypes.number.isRequired,
         charWidth: React.PropTypes.number.isRequired,
         height: React.PropTypes.number.isRequired,
@@ -13,9 +11,9 @@ var Feature = React.createClass({
         name: React.PropTypes.string.isRequired,
         forward: React.PropTypes.bool.isRequired,
         featureClicked: React.PropTypes.func.isRequired,
-    },
+    };
 
-    render: function() {
+    render() {
         var {
             widthInBps, 
             charWidth, 
@@ -107,5 +105,6 @@ var Feature = React.createClass({
             </g>
             );
     }
-});
+}
+
 export default Feature;

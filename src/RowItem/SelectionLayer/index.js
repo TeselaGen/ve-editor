@@ -1,23 +1,12 @@
 import draggableClassnames from '../../constants/draggableClassnames';
 import React, {PropTypes} from 'react';
 import Caret from '../Caret';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+
 import './style.css';
 
 import getXStartAndWidthOfRangeWrtRow from '../getXStartAndWidthOfRangeWrtRow';
 import getOverlapsOfPotentiallyCircularRanges from 've-range-utils/getOverlapsOfPotentiallyCircularRanges';
 
-function mixin(target, source) {
-    target = target.prototype;
-
-    Object.getOwnPropertyNames(source).forEach((name) => {
-        let sourceProp = Object.getOwnPropertyDescriptor(source, name);
-
-        if (name !== "constructor") {
-            Object.defineProperty(target, name, sourceProp);
-        }
-    });
-}
 
 class SelectionLayer extends React.Component {
     render() {
@@ -94,6 +83,5 @@ class SelectionLayer extends React.Component {
     }
 }
 
-mixin(SelectionLayer, PureRenderMixin);
 
 export default SelectionLayer;

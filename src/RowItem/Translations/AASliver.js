@@ -1,8 +1,7 @@
 import React, {PropTypes} from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
-let AASliver = React.createClass({
-    mixins: [PureRenderMixin],
-    propTypes: {
+
+class AASliver extends React.Component {
+    static propTypes = {
         width: PropTypes.number.isRequired,
         height: PropTypes.number.isRequired,
         color: PropTypes.string.isRequired,
@@ -13,7 +12,8 @@ let AASliver = React.createClass({
         onContextMenu: PropTypes.func.isRequired,
         onDoubleClick: PropTypes.func.isRequired,
         relativeAAPositionInTranslation: PropTypes.number.isRequired
-    },
+    };
+
     render() {
         let fatness = 24;
         let x1 = 50 - fatness;
@@ -85,5 +85,6 @@ let AASliver = React.createClass({
         //     };
         // }
     }
-});
+}
+
 export default AASliver;
