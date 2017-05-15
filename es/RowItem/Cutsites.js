@@ -3,10 +3,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 import isPositionWithinRange from 've-range-utils/isPositionWithinRange';
 import norm from 've-range-utils/normalizePositionByRangeLength';
 import assign from 'lodash/assign';
+import PropTypes from 'prop-types';
 import React from 'react';
 import areNonNegativeIntegers from 'validate.io-nonnegative-integer-array';
 import getOverlapsOfPotentiallyCircularRanges from 've-range-utils/getOverlapsOfPotentiallyCircularRanges';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import getXStartAndWidthOfRangeWrtRow from './getXStartAndWidthOfRangeWrtRow';
 var snipStyle = {
     height: "111%",
@@ -69,109 +69,104 @@ function getSnipConnector(snipRange, row, sequenceLength, bpsPerRow, snipConnect
     });
 }
 
-var Cutsites = React.createClass({
-    displayName: 'Cutsites',
+function Cutsites(props) {
+    var annotationRanges = props.annotationRanges,
+        charWidth = props.charWidth,
+        bpsPerRow = props.bpsPerRow,
+        row = props.row,
+        sequenceLength = props.sequenceLength,
+        topStrand = props.topStrand;
 
-    mixins: [PureRenderMixin],
-    propTypes: {
-        // annotationRanges: React.PropTypes.object.isRequired,
-        charWidth: React.PropTypes.number.isRequired,
-        bpsPerRow: React.PropTypes.number.isRequired,
-        row: React.PropTypes.object.isRequired,
-        sequenceLength: React.PropTypes.number.isRequired,
-        topStrand: React.PropTypes.bool.isRequired
-    },
-    render: function render() {
-        var _props = this.props,
-            annotationRanges = _props.annotationRanges,
-            charWidth = _props.charWidth,
-            bpsPerRow = _props.bpsPerRow,
-            row = _props.row,
-            sequenceLength = _props.sequenceLength,
-            topStrand = _props.topStrand;
+    var snips = [];
+    var snipConnectors = [];
+    Object.keys(annotationRanges).forEach(function (key) {
+        var annotationRange = annotationRanges[key];
+        var annotation = annotationRange.annotation;
 
-        var snips = [];
-        var snipConnectors = [];
-        Object.keys(annotationRanges).forEach(function (key) {
-            var annotationRange = annotationRanges[key];
-            var annotation = annotationRange.annotation;
+        if (!annotation) {
+            annotation = annotationRange;
+        }
+        var _annotation = annotation,
+            topSnipPosition = _annotation.topSnipPosition,
+            bottomSnipPosition = _annotation.bottomSnipPosition,
+            upstreamBottomSnip = _annotation.upstreamBottomSnip,
+            upstreamTopSnip = _annotation.upstreamTopSnip,
+            upstreamTopBeforeBottom = _annotation.upstreamTopBeforeBottom,
+            topSnipBeforeBottom = _annotation.topSnipBeforeBottom;
 
-            if (!annotation) {
-                annotation = annotationRange;
-            }
-            var _annotation = annotation,
-                topSnipPosition = _annotation.topSnipPosition,
-                bottomSnipPosition = _annotation.bottomSnipPosition,
-                upstreamBottomSnip = _annotation.upstreamBottomSnip,
-                upstreamTopSnip = _annotation.upstreamTopSnip,
-                upstreamTopBeforeBottom = _annotation.upstreamTopBeforeBottom,
-                topSnipBeforeBottom = _annotation.topSnipBeforeBottom;
+        topSnipPosition = topSnipPosition && Number(topSnipPosition);
+        bottomSnipPosition = bottomSnipPosition && Number(bottomSnipPosition);
+        upstreamTopSnip = upstreamTopSnip && Number(upstreamTopSnip);
+        upstreamBottomSnip = upstreamBottomSnip && Number(upstreamBottomSnip);
 
-            topSnipPosition = topSnipPosition && Number(topSnipPosition);
-            bottomSnipPosition = bottomSnipPosition && Number(bottomSnipPosition);
-            upstreamTopSnip = upstreamTopSnip && Number(upstreamTopSnip);
-            upstreamBottomSnip = upstreamBottomSnip && Number(upstreamBottomSnip);
+        snipStyle = _extends({}, snipStyle, { background: annotation.restrictionEnzyme.color || 'black' });
+        snipConnectorStyle = _extends({}, snipConnectorStyle, { background: annotation.restrictionEnzyme.color || 'black' });
 
-            snipStyle = _extends({}, snipStyle, { background: annotation.restrictionEnzyme.color || 'black' });
-            snipConnectorStyle = _extends({}, snipConnectorStyle, { background: annotation.restrictionEnzyme.color || 'black' });
+        var newSnip;
+        var newConnector;
+        var snipRange = {};
 
-            var newSnip;
-            var newConnector;
-            var snipRange = {};
-
-            if (areNonNegativeIntegers([bottomSnipPosition, topSnipPosition])) {
-                if (topStrand) {
-                    // if (isPositionWithinRange(topSnipPosition, row)) {}
-                    newSnip = getSnipForRow(topSnipPosition, row, sequenceLength, bpsPerRow, snipStyle, charWidth, key + 'downstream');
-                    if (newSnip) {
-                        snips.push(newSnip);
-                    }
-                } else {
-                    newSnip = getSnipForRow(bottomSnipPosition, row, sequenceLength, bpsPerRow, snipStyle, charWidth, key + 'downstream');
-                    if (newSnip) {
-                        snips.push(newSnip);
-                    }
-                    if (topSnipBeforeBottom) {
-                        snipRange.start = topSnipPosition;
-                        snipRange.end = bottomSnipPosition;
-                    } else {
-                        snipRange.start = bottomSnipPosition;
-                        snipRange.end = topSnipPosition;
-                    }
-                    newConnector = getSnipConnector(snipRange, row, sequenceLength, bpsPerRow, snipConnectorStyle, charWidth, key + 'downstreamConnector');
-                    snipConnectors.push(newConnector);
+        if (areNonNegativeIntegers([bottomSnipPosition, topSnipPosition])) {
+            if (topStrand) {
+                // if (isPositionWithinRange(topSnipPosition, row)) {}
+                newSnip = getSnipForRow(topSnipPosition, row, sequenceLength, bpsPerRow, snipStyle, charWidth, key + 'downstream');
+                if (newSnip) {
+                    snips.push(newSnip);
                 }
-            }
-            if (areNonNegativeIntegers([upstreamBottomSnip, upstreamTopSnip])) {
-                if (topStrand) {
-                    newSnip = getSnipForRow(upstreamTopSnip, row, sequenceLength, bpsPerRow, snipStyle, charWidth, key + 'upstream');
-                    if (newSnip) {
-                        snips.push(newSnip);
-                    }
-                } else {
-                    newSnip = getSnipForRow(upstreamBottomSnip, row, sequenceLength, bpsPerRow, snipStyle, charWidth, key + 'upstream');
-                    if (newSnip) {
-                        snips.push(newSnip);
-                    }
-                    if (upstreamTopBeforeBottom) {
-                        snipRange.start = upstreamTopSnip;
-                        snipRange.end = upstreamBottomSnip;
-                    } else {
-                        snipRange.start = upstreamBottomSnip;
-                        snipRange.end = upstreamTopSnip;
-                    }
-                    newConnector = getSnipConnector(snipRange, row, sequenceLength, bpsPerRow, snipConnectorStyle, charWidth, key + 'upstreamConnector');
-                    snipConnectors.push(newConnector);
+            } else {
+                newSnip = getSnipForRow(bottomSnipPosition, row, sequenceLength, bpsPerRow, snipStyle, charWidth, key + 'downstream');
+                if (newSnip) {
+                    snips.push(newSnip);
                 }
+                if (topSnipBeforeBottom) {
+                    snipRange.start = topSnipPosition;
+                    snipRange.end = bottomSnipPosition;
+                } else {
+                    snipRange.start = bottomSnipPosition;
+                    snipRange.end = topSnipPosition;
+                }
+                newConnector = getSnipConnector(snipRange, row, sequenceLength, bpsPerRow, snipConnectorStyle, charWidth, key + 'downstreamConnector');
+                snipConnectors.push(newConnector);
             }
-        });
-        return React.createElement(
-            'div',
-            null,
-            snips,
-            snipConnectors
-        );
-    }
-});
+        }
+        if (areNonNegativeIntegers([upstreamBottomSnip, upstreamTopSnip])) {
+            if (topStrand) {
+                newSnip = getSnipForRow(upstreamTopSnip, row, sequenceLength, bpsPerRow, snipStyle, charWidth, key + 'upstream');
+                if (newSnip) {
+                    snips.push(newSnip);
+                }
+            } else {
+                newSnip = getSnipForRow(upstreamBottomSnip, row, sequenceLength, bpsPerRow, snipStyle, charWidth, key + 'upstream');
+                if (newSnip) {
+                    snips.push(newSnip);
+                }
+                if (upstreamTopBeforeBottom) {
+                    snipRange.start = upstreamTopSnip;
+                    snipRange.end = upstreamBottomSnip;
+                } else {
+                    snipRange.start = upstreamBottomSnip;
+                    snipRange.end = upstreamTopSnip;
+                }
+                newConnector = getSnipConnector(snipRange, row, sequenceLength, bpsPerRow, snipConnectorStyle, charWidth, key + 'upstreamConnector');
+                snipConnectors.push(newConnector);
+            }
+        }
+    });
+    return React.createElement(
+        'div',
+        null,
+        snips,
+        snipConnectors
+    );
+}
+
+process.env.NODE_ENV !== "production" ? Cutsites.propTypes = {
+    // annotationRanges: React.PropTypes.object.isRequired,
+    charWidth: PropTypes.number.isRequired,
+    bpsPerRow: PropTypes.number.isRequired,
+    row: PropTypes.object.isRequired,
+    sequenceLength: PropTypes.number.isRequired,
+    topStrand: PropTypes.bool.isRequired
+} : void 0;
 
 export default Cutsites;

@@ -1,13 +1,24 @@
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-import React, { PropTypes } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Sequence = React.createClass({
-    displayName: 'Sequence',
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-    mixins: [PureRenderMixin],
-    render: function render() {
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+import PropTypes from 'prop-types';
+import React from 'react';
+
+var Sequence = function (_React$Component) {
+    _inherits(Sequence, _React$Component);
+
+    function Sequence() {
+        _classCallCheck(this, Sequence);
+
+        return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+    }
+
+    Sequence.prototype.render = function render() {
         var _props = this.props,
             sequence = _props.sequence,
             charWidth = _props.charWidth,
@@ -49,7 +60,9 @@ var Sequence = React.createClass({
             ),
             children
         );
-    }
-});
+    };
+
+    return Sequence;
+}(React.Component);
 
 export default Sequence;

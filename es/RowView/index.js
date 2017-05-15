@@ -1,5 +1,7 @@
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var _class, _temp;
+
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26,7 +28,7 @@ var defaultMarginWidth = 50;
 
 function noop() {}
 
-var RowView = function (_React$Component) {
+var RowView = (_temp = _class = function (_React$Component) {
   _inherits(RowView, _React$Component);
 
   function RowView() {
@@ -229,24 +231,15 @@ var RowView = function (_React$Component) {
 
     var propsToUse = _extends({}, this.props.veWrapperProvidedProps, this.props);
 
-    var _propsToUse$sequenceD = propsToUse.sequenceData,
-        sequenceData = _propsToUse$sequenceD === undefined ? {} : _propsToUse$sequenceD,
-        _propsToUse$editorDra = propsToUse.editorDragged,
-        editorDragged = _propsToUse$editorDra === undefined ? noop : _propsToUse$editorDra,
-        _propsToUse$editorDra2 = propsToUse.editorDragStarted,
-        editorDragStarted = _propsToUse$editorDra2 === undefined ? noop : _propsToUse$editorDra2,
-        _propsToUse$editorCli = propsToUse.editorClicked,
-        editorClicked = _propsToUse$editorCli === undefined ? noop : _propsToUse$editorCli,
-        _propsToUse$editorDra3 = propsToUse.editorDragStopped,
-        editorDragStopped = _propsToUse$editorDra3 === undefined ? noop : _propsToUse$editorDra3,
-        _propsToUse$onScroll = propsToUse.onScroll,
-        onScroll = _propsToUse$onScroll === undefined ? noop : _propsToUse$onScroll,
-        _propsToUse$width = propsToUse.width,
-        width = _propsToUse$width === undefined ? defaultContainerWidth : _propsToUse$width,
-        _propsToUse$marginWid = propsToUse.marginWidth,
-        marginWidth = _propsToUse$marginWid === undefined ? defaultMarginWidth : _propsToUse$marginWid,
-        _propsToUse$height = propsToUse.height,
-        height = _propsToUse$height === undefined ? 400 : _propsToUse$height,
+    var sequenceData = propsToUse.sequenceData,
+        editorDragged = propsToUse.editorDragged,
+        editorDragStarted = propsToUse.editorDragStarted,
+        editorClicked = propsToUse.editorClicked,
+        editorDragStopped = propsToUse.editorDragStopped,
+        onScroll = propsToUse.onScroll,
+        width = propsToUse.width,
+        marginWidth = propsToUse.marginWidth,
+        height = propsToUse.height,
         rest = _objectWithoutProperties(propsToUse, ['sequenceData', 'editorDragged', 'editorDragStarted', 'editorClicked', 'editorDragStopped', 'onScroll', 'width', 'marginWidth', 'height']);
 
     if (marginWidth < defaultMarginWidth) {
@@ -355,7 +348,21 @@ var RowView = function (_React$Component) {
   };
 
   return RowView;
-}(React.Component);
+}(React.Component), _class.defaultProps = {
+  sequenceData: { sequence: '' },
+  selectionLayer: {},
+  // bpToJumpTo:0,
+  editorDragged: noop,
+  editorDragStarted: noop,
+  editorClicked: noop,
+  editorDragStopped: noop,
+  onScroll: noop,
+  width: defaultContainerWidth,
+  marginWidth: defaultMarginWidth,
+  height: 400,
+  veWrapperProvidedProps: {}
+}, _temp);
+
 
 export default RowView;
 

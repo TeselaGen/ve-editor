@@ -1,3 +1,5 @@
+var _class, _temp;
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -12,7 +14,7 @@ import Select from 'react-select';
 
 import map from 'lodash/map';
 
-var CutsiteFilter = function (_React$Component) {
+var CutsiteFilter = (_temp = _class = function (_React$Component) {
   _inherits(CutsiteFilter, _React$Component);
 
   function CutsiteFilter() {
@@ -29,6 +31,7 @@ var CutsiteFilter = function (_React$Component) {
         cutsitesByName = _props.allCutsites.cutsitesByName,
         inputSequenceToTestAgainst = _props.sequenceData.sequence,
         dispatch = _props.dispatch;
+
     // var {handleOpen, handleClose} = this
 
     var options = [].concat(map(specialCutsiteFilterOptions, function (opt) {
@@ -81,6 +84,14 @@ var CutsiteFilter = function (_React$Component) {
   };
 
   return CutsiteFilter;
-}(React.Component);
-
+}(React.Component), _class.defaultProps = {
+  onChangeHook: function onChangeHook() {},
+  filteredRestrictionEnzymes: [],
+  filteredRestrictionEnzymesUpdate: [],
+  allCutsites: { cutsitesByName: {} },
+  sequenceData: {
+    sequence: ''
+  },
+  dispatch: function dispatch() {}
+}, _temp);
 export { CutsiteFilter as default };

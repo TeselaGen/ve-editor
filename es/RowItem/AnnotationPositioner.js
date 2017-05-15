@@ -1,28 +1,22 @@
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 
-var AnnotationPositioner = React.createClass({
-    displayName: 'AnnotationPositioner',
-
-    mixins: [PureRenderMixin],
-    render: function render() {
-        return React.createElement(
-            'svg',
-            {
-                transform: this.props.transform || null,
-                height: this.props.height + 5,
-                className: this.props.className + ' veRowViewAnnotationPosition',
-                width: this.props.width + 5,
-                style: {
-                    position: 'absolute',
-                    top: this.props.top,
-                    left: this.props.left
-                }
-            },
-            this.props.children
-        );
-    }
-});
+var AnnotationPositioner = function AnnotationPositioner(props) {
+  return React.createElement(
+    'svg',
+    {
+      transform: props.transform || null,
+      height: props.height + 5,
+      className: props.className + ' veRowViewAnnotationPosition',
+      width: props.width + 5,
+      style: {
+        position: 'absolute',
+        top: props.top,
+        left: props.left
+      }
+    },
+    props.children
+  );
+};
 
 export default AnnotationPositioner;
 
