@@ -4,16 +4,19 @@ import Button from './Button';
 import Welcome from './Welcome';
 import createVectorEditor, {
   reducer,
-  CircularView,RowView,
+  CircularView,
+  RowView,
   RowItem,
   VeToolBar,
   CutsiteFilter
 } from '../src';
+import exampleSequenceData from '../es/exampleData/exampleSequenceData';
 
 
 storiesOf('CircularView', module)
   .add('CircularView', () => (
-    <CircularView/>
+      <CircularView sequenceData={exampleSequenceData}/>
+    
   ))
   .add('RowView', () => (
 	<RowView/>

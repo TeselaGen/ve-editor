@@ -18,6 +18,7 @@ export { default as VeToolBar } from './VeToolBar';
 export { default as CutsiteFilter } from './CutsiteFilter';
 export { default as LinearView } from './LinearView';
 export { default as StatusBar } from './StatusBar';
+export { default as HoverHelper } from './HoverHelper';
 
 export default function createVectorEditor(_ref) {
   var namespace = _ref.namespace,

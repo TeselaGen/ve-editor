@@ -4,6 +4,7 @@ export default function getYOffset(iTree, start, end) {
     //we don't want to render the new annotation on top of any of these potentially overlapping annotations
     var potentialPositionsForNewAnnotation = potentiallyOverlappingAnnotations.map(() => true)
     potentiallyOverlappingAnnotations.forEach(function(otherAnnotation){
+        console.log('otherAnnotation:', otherAnnotation)
         potentialPositionsForNewAnnotation[otherAnnotation.object.yOffset] = false
     });
     //get first occurence of empty yOffset

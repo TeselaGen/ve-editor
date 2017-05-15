@@ -2,7 +2,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 import { combineReducers } from 'redux';
 import selectionLayer, * as fromSelectionLayer from './selectionLayer';
-import addYourOwnEnzyme, * as fromAddYourOwnEnzyme from './addYourOwnEnzyme';
 import caretPosition, * as fromCaretPosition from './caretPosition';
 import hoveredAnnotation, * as fromHoveredAnnotation from './hoveredAnnotation';
 import minimumOrfSize, * as fromMinimumOrfSize from './minimumOrfSize';
@@ -46,10 +45,6 @@ var reducers = {
   replacementLayers: replacementLayers
 };
 
-var topLevelReducers = {
-  addYourOwnEnzyme: addYourOwnEnzyme
-};
-
 export default function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments[1];
@@ -81,7 +76,7 @@ export default function () {
     });
     stateToReturn = newState;
   }
-  return _extends({}, stateToReturn, combineReducers(topLevelReducers)(state, action));
+  return stateToReturn;
 }
 
 // export const getBlankEditor = (state) => (state.blankEditor)

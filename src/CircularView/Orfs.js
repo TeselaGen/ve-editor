@@ -42,7 +42,6 @@ function Orfs({radius,
         var spansOrigin = startAngle > endAngle;
         //expand the end angle if annotation spans the origin
         var expandedEndAngle = spansOrigin ? endAngle + 2 * Math.PI : endAngle
-        // if (annotationCopy.id === '5590c1d88979df000a4f02f5c') debugger;
         var yOffset1
         var yOffset2
         if (spansOrigin) {

@@ -2,7 +2,6 @@ import {combineReducers} from 'redux'
 import { createReducer } from 'redux-act'
 import createAction from './utils/createMetaAction'
 import specialCutsiteFilterOptions from '../constants/specialCutsiteFilterOptions'
-// import takaraEnzymeList from '../../../../enzymeListFull.json';
 import defaultEnzymeList from './utils/defaultEnzymeList.json';
 // ------------------------------------
 // Actions

@@ -3651,6 +3651,10 @@ interval-tree2@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/interval-tree2/-/interval-tree2-1.1.0.tgz#210f402906185331872de8440b7c24c6ea2800c4"
 
+"interval-tree2@github:tnrich/interval-tree2":
+  version "1.1.0"
+  resolved "https://codeload.github.com/tnrich/interval-tree2/tar.gz/c2c6cad00896ed3204fdeb9f678d9641f5e38599"
+
 invariant@2.x.x, invariant@^2.0.0, invariant@^2.2.0:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
@@ -6843,7 +6847,7 @@ ua-parser-js@^0.7.9:
   version "0.7.12"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.12.tgz#04c81a99bdd5dc52263ea29d24c6bf8d4818a4bb"
 
-uglify-js@^2.6, uglify-js@^2.7.5, uglify-js@~2.8.22:
+uglify-js@^2.6, uglify-js@~2.8.22:
   version "2.8.22"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.22.tgz#d54934778a8da14903fa29a326fb24c0ab51a1a0"
   dependencies:
@@ -6852,7 +6856,7 @@ uglify-js@^2.6, uglify-js@^2.7.5, uglify-js@~2.8.22:
   optionalDependencies:
     uglify-to-browserify "~1.0.0"
 
-uglify-js@~2.7.3:
+uglify-js@^2.7.5, uglify-js@~2.7.3:
   version "2.7.5"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.7.5.tgz#4612c0c7baaee2ba7c487de4904ae122079f2ca8"
   dependencies:

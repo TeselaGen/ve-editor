@@ -28,9 +28,10 @@ function generateSequence(m = 9) {
 }
 
 function generateAnnotations(numberOfAnnotationsToGenerate, start, stop, maxLength) {
-    let result = [];
+    let result = {};
     for (let i = 0; i < numberOfAnnotationsToGenerate; i++) {
-        result[i] = generateAnnotation(start, stop, maxLength);
+        const annotation = generateAnnotation(start, stop, maxLength);
+        result[annotation.id] = annotation
     }
     return result;
 }

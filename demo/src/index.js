@@ -1,19 +1,21 @@
 import React from "react";
 import { render } from "react-dom";
-
+import exampleSequenceData from '../../src/exampleData/exampleSequenceData';
+console.log('exampleSequenceData:', exampleSequenceData)
 import {
 	CircularView,
 	RowView,
 	RowItem,
 	VeToolBar,
 	CutsiteFilter
-} from "../../lib";
+} from "../../src";
 
 let Demo = function () {
 	return (
 		<div>
 			<h1>ve-editor Demo</h1>
-			<CircularView />
+			<CircularView sequenceData={exampleSequenceData}/>
+			<RowView sequenceData={exampleSequenceData}/>
 		</div>
 	);
 	

@@ -1,6 +1,5 @@
 import {combineReducers} from 'redux'
 import selectionLayer, * as fromSelectionLayer from './selectionLayer'
-import addYourOwnEnzyme, * as fromAddYourOwnEnzyme from './addYourOwnEnzyme'
 import caretPosition, * as fromCaretPosition from './caretPosition'
 import hoveredAnnotation, * as fromHoveredAnnotation from './hoveredAnnotation'
 import minimumOrfSize, * as fromMinimumOrfSize from './minimumOrfSize'
@@ -58,9 +57,6 @@ var reducers = {
   replacementLayers
 }
 
-var topLevelReducers = {
-  addYourOwnEnzyme
-}
 
 export default function (state={}, action) {
   var namespaces
@@ -93,10 +89,7 @@ export default function (state={}, action) {
     });
     stateToReturn = newState
   }
-  return {
-    ...stateToReturn,
-    ...combineReducers(topLevelReducers)(state,action)
-  }
+  return stateToReturn
 
 }
 
