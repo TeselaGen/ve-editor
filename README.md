@@ -1,3 +1,6 @@
+
+# DEPRECATED 
+Please go to https://github.com/TeselaGen/teselagen-react-components and find the vector editor there
 # ve-editor
 
 [![Travis][build-badge]][build]
