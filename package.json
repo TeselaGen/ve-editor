@@ -45,7 +45,7 @@
     "recompose": "^0.23.1",
     "redux": "^3.6.0",
     "redux-act": "^1.2.0",
-    "reselect": "^3.0.0",
+    "reselect": "^4.0.0",
     "standard": "^10.0.2",
     "ve-range-utils": "^2.0.35",
     "ve-sequence-utils": "^3.1.14"
