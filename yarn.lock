@@ -2938,8 +2938,8 @@ express@4.14.0, express@^4.13.3:
     vary "~1.1.0"
 
 extend@^3.0.0, extend@~3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.0.tgz#5a474353b9f3353ddd8176dfd37b91c83a46f1d4"
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
 
 external-editor@^2.0.1:
   version "2.0.1"
@@ -3646,10 +3646,6 @@ interpret@^0.6.4:
 interpret@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.3.tgz#cbc35c62eeee73f19ab7b10a801511401afc0f90"
-
-interval-tree2@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/interval-tree2/-/interval-tree2-1.1.0.tgz#210f402906185331872de8440b7c24c6ea2800c4"
 
 "interval-tree2@github:tnrich/interval-tree2":
   version "1.1.0"
