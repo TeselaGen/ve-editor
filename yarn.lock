@@ -3647,10 +3647,6 @@ interpret@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.3.tgz#cbc35c62eeee73f19ab7b10a801511401afc0f90"
 
-interval-tree2@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/interval-tree2/-/interval-tree2-1.1.0.tgz#210f402906185331872de8440b7c24c6ea2800c4"
-
 "interval-tree2@github:tnrich/interval-tree2":
   version "1.1.0"
   resolved "https://codeload.github.com/tnrich/interval-tree2/tar.gz/c2c6cad00896ed3204fdeb9f678d9641f5e38599"
@@ -4599,8 +4595,8 @@ negotiator@0.6.1:
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
 no-case@^2.2.0:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/no-case/-/no-case-2.3.1.tgz#7aeba1c73a52184265554b7dc03baf720df80081"
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/no-case/-/no-case-2.3.2.tgz#60b813396be39b3f1288a4c1ed5d1e7d28b464ac"
   dependencies:
     lower-case "^1.1.1"
 
