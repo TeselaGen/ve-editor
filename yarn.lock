@@ -3018,9 +3018,9 @@ file-loader@0.9.0, file-loader@^0.9.0:
   dependencies:
     loader-utils "~0.2.5"
 
-file-saver@^1.3.3:
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/file-saver/-/file-saver-1.3.3.tgz#cdd4c44d3aa264eac2f68ec165bc791c34af1232"
+file-saver@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/file-saver/-/file-saver-2.0.2.tgz#06d6e728a9ea2df2cce2f8d9e84dfcdc338ec17a"
 
 filename-regex@^2.0.0:
   version "2.0.0"
@@ -3646,10 +3646,6 @@ interpret@^0.6.4:
 interpret@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.3.tgz#cbc35c62eeee73f19ab7b10a801511401afc0f90"
-
-interval-tree2@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/interval-tree2/-/interval-tree2-1.1.0.tgz#210f402906185331872de8440b7c24c6ea2800c4"
 
 "interval-tree2@github:tnrich/interval-tree2":
   version "1.1.0"
