@@ -3647,10 +3647,6 @@ interpret@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.3.tgz#cbc35c62eeee73f19ab7b10a801511401afc0f90"
 
-interval-tree2@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/interval-tree2/-/interval-tree2-1.1.0.tgz#210f402906185331872de8440b7c24c6ea2800c4"
-
 "interval-tree2@github:tnrich/interval-tree2":
   version "1.1.0"
   resolved "https://codeload.github.com/tnrich/interval-tree2/tar.gz/c2c6cad00896ed3204fdeb9f678d9641f5e38599"
@@ -5973,8 +5969,8 @@ reduce-function-call@^1.0.1:
     balanced-match "^0.4.2"
 
 redux-act@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/redux-act/-/redux-act-1.2.0.tgz#bb0fb15f129edf0d45a241156a23828dda4bbd40"
+  version "1.7.9"
+  resolved "https://registry.yarnpkg.com/redux-act/-/redux-act-1.7.9.tgz#f34c1680fc0fa8038c092d61ec651e1a026a7180"
 
 redux@^3.5.2, redux@^3.6.0:
   version "3.6.0"
