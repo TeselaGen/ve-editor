@@ -3462,8 +3462,8 @@ home-or-tmp@^2.0.0:
     os-tmpdir "^1.0.1"
 
 hosted-git-info@^2.1.4:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.4.2.tgz#0076b9f46a270506ddbaaea56496897460612a67"
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
 
 html-comment-regex@^1.1.0:
   version "1.1.1"
@@ -3646,10 +3646,6 @@ interpret@^0.6.4:
 interpret@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.3.tgz#cbc35c62eeee73f19ab7b10a801511401afc0f90"
-
-interval-tree2@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/interval-tree2/-/interval-tree2-1.1.0.tgz#210f402906185331872de8440b7c24c6ea2800c4"
 
 "interval-tree2@github:tnrich/interval-tree2":
   version "1.1.0"
